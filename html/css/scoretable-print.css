@@ -1,0 +1,112 @@
+@page {
+    size:  auto;   /* auto is the initial value */
+    margin: 0mm;  /* this affects the margin in the printer settings */
+}
+
+html {
+    background-color: #FFFFFF; 
+    margin: 0px;  /* this affects the margin on the html before sending to printer */
+}
+
+body {
+    margin: 0 5mm 0 5mm; /* margin you want for the content */
+}
+
+.modal-lg {
+    width: 100% !important;
+}
+
+.modal-header {
+  border: none;
+  padding: 5mm 0 2mm 0 !important;
+}
+
+.modal-footer {
+  display: none;
+}
+
+.modal-body {
+    padding: 0 5mm 0 5mm;
+    background-color: transparent;
+}
+
+#wrapper {
+    display: none;
+}
+
+#result_list {
+    display: block !important;
+    width: 100% !important;
+}
+
+.footable-sort-indicator {
+    display: none !important;
+    font-size: 0 !important;
+}
+
+.modal-title {
+    text-align: center;
+    margin-left: 6mm;
+}
+
+button.close {
+	display: none;
+}
+
+.score-tableprint {
+    width: 100% !important;
+    background-color: #FFFFFF;
+    border: 1px #000000 solid;
+    border-collapse: collapse;
+}
+
+.score-tableprint caption {
+    font-size: 24px;
+    color: #676a6c;
+    text-align: center;
+}
+
+.score-tableprint thead {
+    border-bottom: 1px #000000 solid;
+}
+
+.score-tableprint tbody tr {
+    border-bottom: 1px #000000 dotted !important; 
+}
+
+.score-tableprint tbody tr td:last-child, .score-tableprint tfoot tr td:last-child {
+    padding-right: 5px;
+}
+
+.score-tableprint th, .score-tableprint td {
+    text-align: center;
+}
+
+.score-tableprint th.position-column {
+    width: 30px;
+}
+
+.score-tableprint th.title-column {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.score-tableprint th.score-column {
+    width: 40px;
+}
+
+.score-tableprint th.mahabig-column {
+    width: 80px;
+}
+
+.score-tableprint th.points-column {
+    width: 70px;
+}
+
+.score-tableprint tfoot {
+    border-top: 1px #000000 solid;
+}
+
+h4 {
+    margin-bottom: 10px !important;
+}

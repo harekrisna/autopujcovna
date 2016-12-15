@@ -14,13 +14,20 @@ application:
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+constants:
+	USER_AVATARS_IMG_FOLDER = user_avatars
 
 session:
 	expiration: 14 days
 
 
 services:
-	- App\Model\UserManager
+	- App\AdminModule\Model\UserManager
 	- App\Forms\FormFactory
-	- App\Forms\SignFormFactory
+	- App\AdminModule\Forms\FormFactory
+	- App\AdminModule\Forms\SignFormFactory
+	- App\AdminModule\Forms\CarFormFactory
 	router: App\RouterFactory::createRouter
+
+	filters: App\AdminModule\Templates\Filters
+	car: App\Model\Car
