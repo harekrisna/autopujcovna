@@ -27,7 +27,9 @@ services:
 	- App\AdminModule\Forms\FormFactory
 	- App\AdminModule\Forms\SignFormFactory
 	- App\AdminModule\Forms\CarFormFactory
+	- App\AdminModule\Forms\BrandFormFactory
 	router: App\RouterFactory::createRouter
 
 	filters: App\AdminModule\Templates\Filters
 	car: App\Model\Car
+	brand: App\Model\Brand

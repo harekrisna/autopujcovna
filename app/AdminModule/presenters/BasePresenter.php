@@ -14,6 +14,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	
 	/** @var Car */
 	protected $car;
+	
+	/** @var Brand */
+	protected $brand;
 
 	/** @var User */
 	protected $user;
@@ -26,6 +29,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         }		
         
         $this->car = $this->context->getService('car');
+        $this->brand = $this->context->getService('brand');
 		$this->user = $this->getUser();
 	}
 
@@ -37,10 +41,5 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		else {
 			parent::flashMessage($message, $type);
 		}
-	}
-
-	public function beforeRender() {
-		$this->template->this_week = date("W");
-        $this->template->this_year = date("Y");
 	}
 }

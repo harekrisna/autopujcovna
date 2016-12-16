@@ -8,27 +8,20 @@
                 <div class="ibox-content">
                     {form form, class => "form-horizontal"}
                         <div class="form-group">
-                            {label data-name, class => "col-sm-2 control-label" /}
+                            {label data-title, class => "col-sm-2 control-label" /}
                             <div class="col-sm-10">
-                                 <input n:name="data-name" n:class="form-control, large, $form['data-name']->error ? error" />
-                                 {if $form['data-name']->error}{label data-name, class => "error" }{$form['data-name']->error}{/label}{/if}
+                                <input n:name="data-title" n:class="form-control, large, $form['data-title']->error ? error" />
+                                {if $form['data-title']->error}{label data-title, class => "error" }{$form['data-title']->error}{/label}{/if}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-center_id, class => "col-sm-2 control-label" /}
-                            <div class="col-sm-10">
-                                {input data-center_id, class => "form-control medium"}
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
-                                {if $presenter->getAction() == "add"}
-                                    {input add, class => "btn btn-primary"}
-                                {/if}
-                                {if $presenter->getAction() == "edit"}
-                                    {input edit, class => "btn btn-primary"}
-                                {/if}
+                            {if $presenter->getAction() == "edit"}
+                                {input edit, class => "btn btn-primary"}
+                            {else}
+                                {input add, class => "btn btn-primary"}
+                            {/if}
                             </div>
                         </div>
                     {/form}
@@ -48,7 +41,6 @@
 
             $("#frm-form").validate();
 
-        });
-        
+        }); 
     </script>
-{/block}  
+{/block}
