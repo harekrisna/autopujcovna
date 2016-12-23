@@ -26,10 +26,11 @@ services:
 	- App\Forms\FormFactory
 	- App\AdminModule\Forms\FormFactory
 	- App\AdminModule\Forms\SignFormFactory
-	- App\AdminModule\Forms\CarFormFactory
+	- App\AdminModule\Forms\VehicleFormFactory
 	- App\AdminModule\Forms\BrandFormFactory
 	router: App\RouterFactory::createRouter
 
 	filters: App\AdminModule\Templates\Filters
-	car: App\Model\Car
+	vehicle: App\Model\Vehicle
 	brand: App\Model\Brand
+	photo: App\Model\Photo

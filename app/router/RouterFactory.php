@@ -20,7 +20,7 @@ class RouterFactory
         # AdminModule route
         $router[] = new Route('admin1896/<presenter>/<action>[/<id>]', array(
         	'module'    => 'Admin',
-            'presenter' => 'Car',
+            'presenter' => 'Vehicle',
             'action'    => 'list'
         ));
 

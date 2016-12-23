@@ -2,3 +2,5 @@ app/config/config.local.neon
 log/*
 temp/*
 node_modules/*
+backup/
+html/images/photos

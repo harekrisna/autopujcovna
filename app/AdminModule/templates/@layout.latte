@@ -16,6 +16,7 @@
     <link href="{$basePath}/css/admin/plugins/toastr/toastr.min.css" rel="stylesheet">
     
     <script src="{$basePath}/js/jquery-2.2.3.js"></script>
+    
 	{block head}
 	{/block}
 </head>
@@ -39,11 +40,11 @@
 	                    </div>
 	                    <div class="logo-element">ADMIN</div>
 	                </li>
-	                <li n:class="$presenter->isLinkCurrent('Car:*') ? active">
-	                    <a n:href="Car:list" title="Vozidla"><i class="fa fa-car"></i><span class="nav-label">Vozidla</span><span class="fa arrow"></span></a>
+	                <li n:class="$presenter->isLinkCurrent('Vehicle:*') ? active">
+	                    <a n:href="Vehicle:list" title="Vozidla"><i class="fa fa-car"></i><span class="nav-label">Vozidla</span><span class="fa arrow"></span></a>
 	                </li>
                     <li n:class="$presenter->isLinkCurrent('Brand:*') ? active">
-                        <a n:href="Brand:list" title="Značky"><i class="fa fa-car"></i><span class="nav-label">Značky</span><span class="fa arrow"></span></a>
+                        <a n:href="Brand:list" title="Značky"><i class="fa fa-diamond"></i><span class="nav-label">Značky</span><span class="fa arrow"></span></a>
                     </li>
                     {*
 	                <li n:class="$presenter->isLinkCurrent('Person:*') ? active">
@@ -123,5 +124,4 @@
 	{block scripts}
 	{/block}
 </body>
-
 </html>

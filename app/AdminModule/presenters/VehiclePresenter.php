@@ -6,20 +6,20 @@ use Nette;
 use App\Model;
 use Tracy\Debugger;
 use Nette\Application\UI\Form;
-use App\AdminModule\Forms\CarFormFactory;
+use App\AdminModule\Forms\VehicleFormFactory;
 
 
-class CarPresenter extends BasePresenter {
+class VehiclePresenter extends BasePresenter {
 	/** @var object */
     private $record;
-	/** @var Car */
+	/** @var Vehicle */
 	private $model;
-	/** @var CarFormFactory @inject */
+	/** @var VehicleFormFactory @inject */
 	public $factory;
 
 	protected function startup() {
 		parent::startup();
-		$this->model = $this->car;
+		$this->model = $this->vehicle;
 	}
 	
 	public function renderAdd() {
@@ -51,11 +51,11 @@ class CarPresenter extends BasePresenter {
 		$form->onSuccess[] = function ($form) {
 			if($form->isSubmitted()->name == "add") {
 				$this->flashMessage("Automobul byl úspěšně přidán", 'success');
-				$form->getPresenter()->redirect('Car:add');
+				$form->getPresenter()->redirect('Vehicle:add');
 			}
 			else {
 				$this->flashMessage("Automobil byl upraven", 'success');
-				$form->getPresenter()->redirect('Car:list');
+				$form->getPresenter()->redirect('Vehicle:list');
 			}
 		};
 

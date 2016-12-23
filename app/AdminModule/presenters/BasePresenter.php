@@ -12,12 +12,12 @@ use Tracy\Debugger;
  */
 abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	
-	/** @var Car */
-	protected $car;
-	
+	/** @var Vehicle */
+	protected $vehicle;	
 	/** @var Brand */
 	protected $brand;
-
+	/** @var Photo */
+	protected $photo;
 	/** @var User */
 	protected $user;
 	
@@ -28,8 +28,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
             $this->redirect('Sign:in');
         }		
         
-        $this->car = $this->context->getService('car');
+        $this->vehicle = $this->context->getService('vehicle');
         $this->brand = $this->context->getService('brand');
+        $this->photo = $this->context->getService('photo');
 		$this->user = $this->getUser();
 	}
 
