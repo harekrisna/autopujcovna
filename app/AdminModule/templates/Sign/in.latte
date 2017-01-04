@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SKT Score</title>
+    <title>Allrisk veřejná autopůjčovna - ADMIN</title>
 
     <link href="{$basePath}/css/admin/bootstrap.min.css" rel="stylesheet">
     <link href="{$basePath}/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -14,24 +14,9 @@
     <link href="{$basePath}/css/admin/animate.css" rel="stylesheet">
     <link href="{$basePath}/css/admin/style.css" rel="stylesheet">
     <style>
-        .logo-name { color: #cccccc; }
-
-        .logo-bottom {
-            color: #cccccc;
-            font-size: 25px;
-            letter-spacing: 8px;
-            margin: -96px -25px 76px 225px;
-            -webkit-transform: rotate(-90deg);
-            -moz-transform: rotate(-90deg);
-            -ms-transform: rotate(-90deg);
-            -o-transform: rotate(-90deg);
+        .logo { 
+            width: 250px;
         }
-
-        .login-error {
-            color: #CC5965;
-            margin-bottom: 10px;
-        }
-
     </style>
 </head>
 
@@ -40,8 +25,7 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-                <h1 class="logo-name">SKT</h1>
-                <p class="logo-bottom">score</p>
+                <img class="logo" src="{$basePath}/images/logo-kulicka.png" />
             </div>
             <p>Allrisk veřejná autopůjčovna - ADMIN</p>
             <p>Přihlášení do systému</p>
@@ -58,7 +42,7 @@
                 {input send, class => "btn btn-primary block full-width m-b"}
 
 			{/form}
-            <p class="m-t"> <small>Prabhupád Bhavan &copy; 2016</small> </p>
+            <p class="m-t"> <small>Allrisk &copy; 2017</small> </p>
         </div>
     </div>
 
@@ -67,5 +51,4 @@
     <script src="{$basePath}/js/bootstrap.min.js"></script>
 
 </body>
-
 </html>
