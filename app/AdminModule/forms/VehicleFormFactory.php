@@ -53,8 +53,14 @@ class VehicleFormFactory extends Nette\Object {
 	public function formSucceeded(Form $form, $values) {
 		try {
 			if($form->isSubmitted()->name == "add") {
-				Debugger::fireLog($values);
-				$this->vehicle->insert($values->data);
+				$new_record = $this->vehicle->insert($values->data);
+				$photos_folder = "./images/photos/".$new_record->id."_".$new_record->rz;
+				mkdir($photos_folder);
+				chmod($photos_folder, 0777);
+				mkdir($photos_folder."/photos");
+				chmod($photos_folder, 0777);
+				mkdir($photos_folder."/previews");
+				chmod($photos_folder, 0777);
 			}
 			else {
 				$this->vehicle->update($this->record->id, $values->data);
