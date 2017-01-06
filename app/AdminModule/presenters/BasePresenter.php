@@ -16,6 +16,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	protected $vehicle;	
 	/** @var Brand */
 	protected $brand;
+	/** @var RentalOrder */
+	protected $rentalOrder;
 	/** @var Photo */
 	protected $photo;
 	/** @var User */
@@ -29,9 +31,13 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         }		
         
         $this->vehicle = $this->context->getService('vehicle');
-        $this->brand = $this->context->getService('brand');
         $this->photo = $this->context->getService('photo');
+        $this->brand = $this->context->getService('brand');
+        $this->rentalOrder = $this->context->getService('rentalOrder');
 		$this->user = $this->getUser();
+
+		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker:: register();
+		\RadekDostal\NetteComponents\DateTimePicker\DatePicker:: register();
 	}
 
 	public function flashMessage($message, $type = 'info') {

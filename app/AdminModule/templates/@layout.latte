@@ -46,6 +46,9 @@
                     <li n:class="$presenter->isLinkCurrent('Brand:*') ? active">
                         <a n:href="Brand:list" title="Značky"><i class="fa fa-diamond"></i><span class="nav-label">Značky</span><span class="fa arrow"></span></a>
                     </li>
+                    <li n:class="$presenter->isLinkCurrent('RentalOrder:*') ? active">
+                        <a n:href="RentalOrder:list" title="Objednávky"><i class="fa fa-handshake-o"></i><span class="nav-label">Objednávky</span><span class="fa arrow"></span></a>
+                    </li>
                     {*
 	                <li n:class="$presenter->isLinkCurrent('Person:*') ? active">
 	                    <a n:href="Person:list" title="Osoby"><i class="fa fa-child"></i><span class="nav-label">Osoby</span><span class="fa arrow"></span></a>

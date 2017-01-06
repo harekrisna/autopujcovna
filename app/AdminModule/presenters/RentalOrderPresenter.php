@@ -6,37 +6,37 @@ use Nette;
 use App\Model;
 use Tracy\Debugger;
 use Nette\Application\UI\Form;
-use App\AdminModule\Forms\VehicleFormFactory;
+use App\AdminModule\Forms\RentalOrderFormFactory;
 
 
-class VehiclePresenter extends BasePresenter {
+class RentalOrderPresenter extends BasePresenter {
 	/** @var object */
     private $record;
 	/** @var Vehicle */
 	private $model;
-	/** @var VehicleFormFactory @inject */
+	/** @var RentalOrderFormFactory @inject */
 	public $factory;
 
 	protected function startup() {
 		parent::startup();
-		$this->model = $this->vehicle;
+		$this->model = $this->rentalOrder;
 	}
 	
 	public function renderAdd() {
 		$this->setView("form");
-		$this->template->form_title = "Přidat automobil";
+		$this->template->form_title = "Vytvořit objednávku";
 	}
 
 	public function renderEdit($record_id) {
 		$this->setView("form");
-		$this->template->form_title = "Upravit automobil";
+		$this->template->form_title = "Upravit objednávku";
 	}
 
 	public function actionEdit($record_id) {
 		$this->record = $this->model->get($record_id);
 		
 		if (!$this->record)
-            throw new Nette\Application\BadRequestException("Automobil nenalezen.");
+            throw new Nette\Application\BadRequestException("Objednávka nenalezena.");
 			
         $this->template->record = $this->record;
 	}
@@ -50,12 +50,12 @@ class VehiclePresenter extends BasePresenter {
 		
 		$form->onSuccess[] = function ($form) {
 			if($form->isSubmitted()->name == "add") {
-				$this->flashMessage("Automobul byl úspěšně přidán", 'success');
-				$form->getPresenter()->redirect('Vehicle:add');
+				$this->flashMessage("Objednávka byla úspěšně vytvořena", 'success');
+				$form->getPresenter()->redirect('RentalOrder:add');
 			}
 			else {
-				$this->flashMessage("Automobil byl upraven", 'success');
-				$form->getPresenter()->redirect('Vehicle:list');
+				$this->flashMessage("Objednávka byla upravena", 'success');
+				$form->getPresenter()->redirect('RentalOrder:list');
 			}
 		};
 
@@ -63,11 +63,6 @@ class VehiclePresenter extends BasePresenter {
 	}	
 
 	public function actionDelete($id) {
-		$record = $this->model->get($id);
-		if($record->photos_folder != "") {
-			\Nette\Utils\FileSystem::delete("./images/photos/".$record->photos_folder);
-		}
-		
 		$this->payload->success = $this->model->delete($id);
 		$this->sendPayload();
 	}

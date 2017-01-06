@@ -28,9 +28,11 @@ services:
 	- App\AdminModule\Forms\SignFormFactory
 	- App\AdminModule\Forms\VehicleFormFactory
 	- App\AdminModule\Forms\BrandFormFactory
+	- App\AdminModule\Forms\RentalOrderFormFactory
 	router: App\RouterFactory::createRouter
 
 	filters: App\AdminModule\Templates\Filters
 	vehicle: App\Model\Vehicle
 	brand: App\Model\Brand
 	photo: App\Model\Photo
+	rentalOrder: App\Model\RentalOrder

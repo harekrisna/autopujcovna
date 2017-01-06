@@ -38,6 +38,7 @@ class VehicleFormFactory extends Nette\Object {
 		$data->addSelect("bodywork", "Karoserie", ['Sedan' => 'Sedan', 'Liftback' => 'Liftback', 'Hatchback' => 'Hatchback', 'Limuzína' => 'Limuzína', 'Combi' => 'Combi', 'MPV' => 'MPV', 'SUV' => 'SUV', 'Crossover' => 'Crossover', 'Terénní vůz' => 'Terénní vůz', 'Pick-Up' => 'Pick-Up', 'Kabriolet' => 'Kabriolet', 'Roadster' => 'Roadster', 'Kupé' => 'Kupé']);
 		$data->addSelect("fuel", "Palivo", ['benzín' => 'benzín', 'nafta' => 'nafta', 'LPG' => 'LPG', 'CNG' => 'CNG']);
 		$data->addSelect("transmission", "Řazení", ['manuál' => 'manuál', 'automat' => 'automat']);
+		$data->addText("note", "Poznámka");
 
 	    $form->addSubmit('add', 'Přidat automobil');
 	    $form->addSubmit('edit', 'Uložit změny');
@@ -54,7 +55,9 @@ class VehicleFormFactory extends Nette\Object {
 		try {
 			if($form->isSubmitted()->name == "add") {
 				$new_record = $this->vehicle->insert($values->data);
-				$photos_folder = "./images/photos/".$new_record->id."_".$new_record->rz;
+				$photos_folder = $new_record->id."_".$new_record->rz;
+				$this->vehicle->update($new_record->id, ['photos_folder' => $new_record->id."_".$new_record->rz]);
+				$photos_folder = "./images/photos/".$photos_folder;
 				mkdir($photos_folder);
 				chmod($photos_folder, 0777);
 				mkdir($photos_folder."/photos");
