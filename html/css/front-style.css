@@ -159,6 +159,13 @@ hr.colored {
     max-width: 200px;
     margin: 20px auto;
   }
+  hr.our-cars-line {
+    max-width: 550px !important;
+  }
+
+  hr.reservation-line {
+    max-width: 700px !important;
+  }
   hr.left {
     margin: 20px auto 20px 0;
   }
@@ -515,9 +522,7 @@ aside.cta-quote span.quote {
     display: block;
   }
 }
-.cta-form h3 {
-  margin-top: 0;
-}
+
 .about-content {
   padding: 30px;
 }
@@ -1091,6 +1096,10 @@ footer.footer .copyright p.small {
 .margin-top-25 {
 	margin-top: 25px;
 }
+
+.margin-bottom-75 {
+	margin-top: 75px !important;
+}
 .btn-color-full {
 	 background: #2188a9;
 	 color: white;
@@ -1233,10 +1242,18 @@ body.vintage .car-slideshow .owl-controls .owl-next {
 	color: rgba(0, 0, 0, 0.01);
 }
 
+#our-cars .carousel-indicators {
+	bottom: -15px !important;
+}
+
 #our-cars .carousel-indicators li {
 	background-color: rgba(0, 0, 0, 0.33);
 }
 
 #our-cars .carousel-indicators li.active {
 	background-color: rgba(0, 0, 0, 0.58);
+}
+
+.color-black {
+	color: black;
 }
