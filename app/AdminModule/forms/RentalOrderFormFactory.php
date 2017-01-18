@@ -3,7 +3,8 @@
 namespace App\AdminModule\Forms;
 
 use Nette;
-use Nette\Forms;
+use Nette\Application\UI\Form;
+use Nette\Utils\DateTime;
 use Tracy\Debugger;
 
 class RentalOrderFormFactory extends Nette\Object {
@@ -33,7 +34,8 @@ class RentalOrderFormFactory extends Nette\Object {
 		
 		$vehicles = $this->vehicle->findAll()->fetchPairs('id', 'rz');
 		$data->addSelect("vehicle_id", "Vozidlo", $vehicles)
-			 ->setPrompt("--- vyberte vozidlo ---");
+			 ->setPrompt("--- vyberte vozidlo ---")
+			 ->setRequired('Vyberte prosím vozidlo.');;
 		
 		$data->addText('name', 'Jméno', 512);
 		$data->addText('surname', 'Příjmení', 512)
@@ -48,10 +50,11 @@ class RentalOrderFormFactory extends Nette\Object {
 		$data->addText('phone', 'Telefon', 32)
 			 ->setRequired('Zadejte telefon prosím.');
 		$data->addText('give_place', 'Místo přistavení', 512);
-		$data->addDateTimePicker('give_time', 'Čas přistavení', 10, 10);
+		$data->addDateTimePicker('give_time', 'Čas přistavení');
 		$data->addText('take_place', 'Místo odstavení', 512);
-		$data->addDateTimePicker('take_time', 'Čas odstavení', 10, 10);
+		$data->addDateTimePicker('take_time', 'Čas odstavení');
 		$data->addText("note", "Poznámka");
+		$form->addCheckbox("processed", " Zpracováno");
 
 	    $form->addSubmit('add', 'Vytvořit objednávku');
 	    $form->addSubmit('edit', 'Uložit změny');
@@ -67,10 +70,20 @@ class RentalOrderFormFactory extends Nette\Object {
 	public function formSucceeded(Form $form, $values) {
 		try {
 			if($form->isSubmitted()->name == "add") {
-				$this->vehicle->insert($values->data);
+				$this->rental_order->insert($values->data);
 			}
 			else {
-				$this->vehicle->update($this->record->id, $values->data);
+				if($values->processed == true) {
+					if($this->record->processed_time == null) {
+						$this->rental_order->update($this->record->id, ['processed_time' => date('Y-m-d H:i:s')]);
+					}
+				}
+				else {
+					if($this->record->processed_time != null) {
+						$this->rental_order->update($this->record->id, ['processed_time' => null]);
+					}
+				}
+				$this->rental_order->update($this->record->id, $values->data);
 			}
 		}
 		catch(\App\Model\DuplicateException $e) {

@@ -362,6 +362,12 @@ textarea.form-control.import-source {
   padding: 0;
   border: 0;
 }
+table .processed {
+  color: green;
+}
+table .no-processed {
+  color: red;
+}
 h1.clear {
   border-bottom: 1px solid #cacaca;
   width: 100%;

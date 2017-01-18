@@ -37,7 +37,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		$this->user = $this->getUser();
 
 		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker:: register();
-		\RadekDostal\NetteComponents\DateTimePicker\DatePicker:: register();
 	}
 
 	public function flashMessage($message, $type = 'info') {

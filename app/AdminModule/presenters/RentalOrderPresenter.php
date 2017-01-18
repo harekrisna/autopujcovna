@@ -42,12 +42,16 @@ class RentalOrderPresenter extends BasePresenter {
 	}
 
 	public function renderList($category_id) {
-        $this->template->records = $this->model->findAll();
+        $this->template->records = $this->model->findAll()
+        									   ->order("created_time DESC");
 	}
 
 	protected function createComponentForm() {
 		$form = $this->factory->create($this->record);
 		
+		if($this->record->processed_time != null)
+			$form['processed']->setDefaultValue(TRUE);
+
 		$form->onSuccess[] = function ($form) {
 			if($form->isSubmitted()->name == "add") {
 				$this->flashMessage("Objednávka byla úspěšně vytvořena", 'success');

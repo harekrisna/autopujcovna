@@ -2,6 +2,7 @@
 {block head}
 {include parent}
 <link href="{$basePath}/css/admin/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="{$basePath}/css/admin/plugins/iCheck/custom.css" rel="stylesheet">
 {/block}
 {block content}
     <div class="row">
@@ -59,9 +60,7 @@
                         <div class="form-group">
                             {label data-give_time, class => "col-sm-2 control-label" /}
                             <div class="col-sm-10">
-                                <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>{input data-give_time, class => "datetimepicker form-control small"}
-                                </div>
+                                {input data-give_time}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -75,9 +74,7 @@
                         <div class="form-group">
                             {label data-take_time, class => "col-sm-2 control-label" /}
                             <div class="col-sm-10">
-                                <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>{input data-take_time, class => "datetimepicker form-control small"}
-                                </div>
+                                {input data-take_time}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -87,9 +84,19 @@
                                 {input data-note, class => "form-control large"}
                             </div>
                         </div>
+                        {if $presenter->getAction() == "edit"}
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-10">
+                                <div class="i-checks">{input processed}</div>
+                            </div>
+                        </div>
+                        {/if}
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
+                            <a n:href="list" class="btn btn-white">Storno</a>
                             {if $presenter->getAction() == "edit"}
                                 {input edit, class => "btn btn-primary"}
                             {else}
@@ -113,22 +120,45 @@
     <script type="text/javascript" src="{$basePath}/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{$basePath}/js/jquery-ui-timepicker-addon.min.js"></script>
     <script type="text/javascript" src="{$basePath}/js/forms.js"></script>
-       <!-- Data picker -->
+    
+    <!-- Date picker -->
     <script src="{$basePath}/js/plugins/datapicker/bootstrap-datepicker.js"></script>
-    <script>
+    
+    <!-- iCheck -->
+    <script src="{$basePath}/js/plugins/iCheck/icheck.min.js"></script>
 
+    <script>
         $(document).ready(function(){
+            $.fn.datepicker.dates['cs'] = {
+                days: ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
+                daysShort: ["Ned", "Pon", "Úte", "Stř", "Čtv", "Pát", "Sob"],
+                daysMin: ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"],
+                months: ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
+                monthsShort: ["Led", "Úno", "Bře", "Dub", "Kvě", "Čer", "Čnc", "Srp", "Zář", "Říj", "Lis", "Pro"],
+                today: "Dnes",
+                clear: "Vymazat",
+                monthsTitle: "Měsíc",
+                weekStart: 1,
+                format: "dd.mm.yyyy"
+            };
             $('div.input-group.date').datepicker({
                 todayBtn: "linked",
                 keyboardNavigation: false,
                 forceParse: false,
                 calendarWeeks: true,
-                autoclose: true
+                autoclose: true,
+                language: 'cs',
             });            
 
 			jQuery.extend(jQuery.validator.messages, {
 				required: "Toto pole je povinné.",
+                email: "Prosím zadejte validní emailovou adresu.",
 			});
+
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
 
             $("#frm-form").validate();
 

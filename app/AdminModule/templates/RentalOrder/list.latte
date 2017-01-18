@@ -24,25 +24,33 @@
                                 <th class="noselect">Čas přistavení</th>
                                 <th class="noselect">Místo odstavení</th>
                                 <th class="noselect">Čas odstavení</th>
-                                <th class="noselect">Zpracováno</th>
                                 <th data-sort-ignore="true" class="noselect">Poznámka</th>
+                                <th class="noselect">Vytvořeno</th>
+                                <th class="noselect">Zpracováno</th>
                                 <th data-sort-ignore="true" data-name="controls" style="width: 62px"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr n:foreach="$records as $record">
-                                <td>{ifset $record->vehicle_id}{$record->vehicle->rz}{/ifset}</td>
                                 <td>{$record->id}</td>
+                                <td>{ifset $record->vehicle_id}{$record->vehicle->rz}{/ifset}</td>
                                 <td>{$record->name}</td>
                                 <td>{$record->surname}</td>
                                 <td>{$record->email}</td>
                                 <td>{$record->phone}</td>
                                 <td>{$record->give_place}</td>
-                                <td>{$record->give_time}</td>
+                                <td>{$record->give_time|date: 'd.m.y h:i'}</td>
                                 <td>{$record->take_place}</td>
-                                <td>{$record->take_time}</td>
-                                <td>{$record->processed}</td>
+                                <td>{$record->take_time|date: 'd.m.y h:i'}</td>
                                 <td>{$record->note}</td>
+                                <td>{$record->created_time|date: 'd.m.y h:i:s'}</td>
+                                <td>
+                                    {if $record->processed_time}
+                                        <span class="processed">ANO ({$record->processed_time|date: 'd.m.y h:i:s'})</span>
+                                    {else}
+                                        <span class="no-processed">NE</span>
+                                    {/if}
+                                </td>
                                 <td class="controls"> 
                                     <a class="row-edit" n:href="edit, $record->id"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a class="row-delete" data-delete_name="{ifset $record->vehicle_id}{$record->vehicle->rz}{/ifset}" n:href="delete, $record->id"><span class="glyphicon glyphicon-remove"></span></a>
@@ -51,7 +59,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="8">
+                                <td colspan="14">
                                     <ul class="pagination pull-right"></ul>
                                 </td>
                             </tr>
