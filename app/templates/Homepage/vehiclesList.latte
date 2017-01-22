@@ -1,0 +1,43 @@
+{block content}
+{snippet main}
+<div class="row ">
+	<div class="col-md-12 well ">
+		<span class="pull-left">vyhledáno: {$vehicles->count()} automobilu</span>
+		<span class="pull-right">seřadit podle: cena název</span>
+	</div>
+</div>
+{foreach $vehicles as $vehicle}
+<div class="row">
+	<div class="col-md-12 well well-sm">
+		<div class="row">	
+			<div class="col-md-8">
+				<h4 class="text-pull-left">{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</h4>
+			</div>
+			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
+			<div class="col-md-4">
+				<span class="label label-default">800,-/den</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25" width="304" height="263">
+			</div>
+			<div class="col-md-6">
+				<ul class="list-unstyled">
+					<li class=""><i></i></li>
+					<li class=""></li>
+					<li class=""></li>
+					<li class=""></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<a n:href="vehicleDetail, $vehicle->id" class="btn btn-block btn-default ajax">DETAIL VOZU</a>
+			</div>
+		</div>
+	</div>
+</div>
+{/foreach}
+{/snippet}
+{/block}

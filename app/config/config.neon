@@ -24,6 +24,8 @@ session:
 services:
 	- App\AdminModule\Model\UserManager
 	- App\Forms\FormFactory
+	- App\Forms\VehiclesFilterFormFactory
+	- App\Forms\RentalOrderFormFactory	
 	- App\AdminModule\Forms\FormFactory
 	- App\AdminModule\Forms\SignFormFactory
 	- App\AdminModule\Forms\VehicleFormFactory

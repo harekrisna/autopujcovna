@@ -10,8 +10,7 @@ use Tracy\Debugger;
 /**
  * Base presenter for all application presenters.
  */
-abstract class BasePresenter extends Nette\Application\UI\Presenter {
-	
+abstract class BasePresenter extends Nette\Application\UI\Presenter {	
 	/** @var Vehicle */
 	protected $vehicle;	
 	/** @var Brand */
@@ -36,7 +35,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         $this->rentalOrder = $this->context->getService('rentalOrder');
 		$this->user = $this->getUser();
 
-		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker:: register();
+		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker::register();
 	}
 
 	public function flashMessage($message, $type = 'info') {
@@ -47,5 +46,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 		else {
 			parent::flashMessage($message, $type);
 		}
+	}
+	
+	public function beforeRender() {
+		parent::beforeRender();
+		
+		$this->template->vehicles_count = $this->vehicle->findAll()->count();
 	}
 }

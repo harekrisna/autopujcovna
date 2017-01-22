@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-	<title>{ifset title}{include title|striptags} | {/ifset}Nette Sandbox</title>
+	<title n:snippet="title">{ifset title}{include title|striptags} | {/ifset}Car Effective</title>
+	<script src="{$basePath}/framework/jquery/jquery.min.js"></script>
 	<link href="{$basePath}/framework/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="{$basePath}/framework/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css">
@@ -21,6 +22,8 @@
     <link href="{$basePath}/framework/device-mockups/device-mockups.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="{$basePath}/css/front-style.css">
+    
+	<link href="{$basePath}/css/admin/plugins/datapicker/datepicker3.css" rel="stylesheet">    
 	{block head}{/block}
 </head>
 
@@ -88,22 +91,13 @@
                     <h1>NAŠE VOZIDLA</h1>
                     <hr class="colored our-cars-line thick">
 					<ul class="nav-center">
-	                    <li>
-	                    	<a href="" title="">FORD</a>
-	                    </li>
-	                    <li>
-	                    	<a href="" title="">ŠKODA</a>
-	                    </li>
-	                    <li>
-	                    	<a href="" title="">BMW</a>
-	                    </li>
-	                    <li>
-	                    	<a href="" title="">VW</a>
-	                    </li>
+	                    <li><a href="" title="">FORD</a></li>
+	                    <li><a href="" title="">ŠKODA</a></li>
+	                    <li><a href="" title="">BMW</a></li>
+	                    <li><a href="" title="">VW</a></li>
 					</ul>
                 </div>
             </div>
-           
         </div>
 		<div class="car-slideshow">
 	        <div class="container">
@@ -120,19 +114,19 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="{$basePath}/images/front-end/cars/skoda/2_Superb_retus.png" alt="Škoda Superb" width="460" height="345">
+							<img src="{$basePath}/images/front-end/cars/skoda/2_Superb_retus.png" alt="Škoda Superb" width="460" height="345" />
 						</div>
 
 						<div class="item">
-							<img src="{$basePath}/images/front-end/cars/skoda/1_Octavia_retus.png" alt="Chania" width="460" height="345">
+							<img src="{$basePath}/images/front-end/cars/skoda/1_Octavia_retus.png" alt="Chania" width="460" height="345" />
 						</div>
 
 						<div class="item">
-							<img src="{$basePath}/images/front-end/cars/skoda/1_Octavia_combi_retus.png" alt="Flower" width="460" height="345">
+							<img src="{$basePath}/images/front-end/cars/skoda/1_Octavia_combi_retus.png" alt="Flower" width="460" height="345" />
 						</div>
 
 						<div class="item">
-							<img src="{$basePath}/images/front-end/cars/skoda/1_Kodiak_retus.png" alt="Flower" width="460" height="345">
+							<img src="{$basePath}/images/front-end/cars/skoda/1_Kodiak_retus.png" alt="Flower" width="460" height="345" />
 						</div>
 					</div>
 
@@ -147,12 +141,12 @@
 					</a>
 				</div>
 			</div>
-		<div>
+		</div>
     </section>
     <section id="reservation-form" class="bg-dark">
-        <div class="container text-center">
+        <div class="container text-center" id="main_container">
             <h1>REZERVACE VOZIDLA</h1>
-            <hr class="colored reservation-line thick">
+            <hr class="colored reservation-line thick"><div></div>
             <br class="margin-bottom-75">
 			<div class="row">
 				<div class="col-md-4 ">
@@ -161,10 +155,6 @@
 						<div class="col-md-12">
 							<h4 class="color-black">TERMÍN REZERVACE</h4>
 						</div>
-
-						<!--form start-->
-						<form role="form" action="//startbootstrap.us3.list-manage.com/subscribe/post?u=531af730d8629808bd96cf489&amp;id=afb284632f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
-						<!-- -->
 						
 						<div class="col-md-8 form-group">
 							
@@ -261,170 +251,58 @@
                                 	<input type="text" name="adress-to" class="form-control" id="mce-EMAIL" placeholder="Email address...">
                                 	<span class="input-group-btn">
                                     	<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">X</button>
-                               		 </span>
+                                	</span>                               		 
                             	</div>
 						</div>
 						<div class="col-md-12 form-group">
 							<h4 class="color-black">VÝBĚR VOZIDLA</h4>
 						</div>
-						<div class="col-md-6 form-group">
-						    <div class="input-group">
-						      <span class="input-group-addon">
-						        <input type="checkbox" aria-label="...">
-						      </span>
-						      <input type="text" class="form-control" aria-label="...">
-						    </div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
-						<div class="col-md-6 form-group">
-						    <div class="input-group">
-						      <span class="input-group-addon">
-						        <input type="checkbox" aria-label="...">
-						      </span>
-						      <input type="text" class="form-control" aria-label="...">
-						    </div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
-						<div class="col-md-6 form-group">
-						    <div class="input-group">
-						      <span class="input-group-addon">
-						        <input type="checkbox" aria-label="...">
-						      </span>
-						      <input type="text" class="form-control" aria-label="...">
-						    </div><!-- /input-group -->
-						  </div><!-- /.col-lg-6 -->
-						<div class="col-md-6 form-group">
-						    <div class="input-group">
-						      <span class="input-group-addon">
-						        <input type="checkbox" aria-label="...">
-						      </span>
-						      <input type="text" class="form-control" aria-label="...">
-						    </div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
-						<div class="col-md-6 form-group">
-						    <div class="input-group">
-						      <span class="input-group-addon">
-						        <input type="checkbox" aria-label="...">
-						      </span>
-						      <input type="text" class="form-control" aria-label="...">
-						    </div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
-						<div class="col-md-6 form-group">
-						    <div class="input-group">
-						      <span class="input-group-addon">
-						        <input type="checkbox" aria-label="...">
-						      </span>
-						      <input type="text" class="form-control" aria-label="...">
-						    </div><!-- /input-group -->
-						</div><!-- /.col-lg-6 -->
-					<div class="col-md-12 form-group">
-						<hr />
-					</div>
-					<div class="col-md-12 form-group">
-						<button class="btn btn-large btn-block btn-primary" type="button">VYHLEDAT</button>
-					</div>
+						{form vehiclesFilterForm, class => "ajax"}
+							<style>
+								label {
+									color: #333;
+								}
+							</style>
+							<fieldset class="filter">
+	                            <legend>{label brands /}</legend>
+								{foreach $form[brands]->items as $key => $label}
+									<label n:name="brands:$key"><input n:name="brands:$key">{$label}</label>
+								{/foreach}
+	                        </fieldset>
+							<fieldset class="filter">
+	                            <legend>{label bodywork /}</legend>
+								{foreach $form[bodywork]->items as $key => $label}
+									<label n:name="bodywork:$key"><input n:name="bodywork:$key">{$label}</label>
+								{/foreach}
+	                        </fieldset>
+							<fieldset class="filter">
+	                            <legend>{label fuel /}</legend>
+								{foreach $form[fuel]->items as $key => $label}
+									<label n:name="fuel:$key"><input n:name="fuel:$key">{$label}</label>
+								{/foreach}
+	                        </fieldset>
+							<fieldset class="filter">
+	                            <legend>{label transmission /}</legend>
+								{foreach $form[transmission]->items as $key => $label}
+									<label n:name="transmission:$key"><input n:name="transmission:$key" onclick="this.checked=true;">{$label}</label>
+								{/foreach}
+	                        </fieldset>
+							<div class="col-md-12 form-group">
+								<hr />
+								{input search, class => "btn btn-large btn-block btn-primary"}
+							</div>
+						{/form}
 					</div>
 				</div>
 				<div class="col-md-8 color-black">
-					<div class="row ">
-						<div class="col-md-12 well ">
-							<span class="pull-left">vyhledáno: 8 automobilu</span>
-							<span class="pull-right">seřadit podle: cena název</span>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 well well-sm">
-							
-
-							<div class="col-md-6">
-								<div class="container">
-									<h4 class="text-pull-left">
-										ŠKODA Kodiak 2.0 TDi, diesel automat
-									</h4>
-									<img src="{$basePath}/images/front-end/cars/skoda/1_Kodiak_retus.png" alt="" class="img-responsive pull-left margin-bottom-25" width="304" height="263">
-								</div>
-								<button class="btn btn-block btn-default" type="button">DETAIL VOZU</button>
-
-							</div>
-							<div class="col-md-6">
-								<div class="">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 well well-sm">
-							
-
-							<div class="col-md-6">
-								<div class="container">
-									<h4 class="text-pull-left">
-										ŠKODA Superb 2.0 TDi, diesel manual
-									</h4>
-									<img src="{$basePath}/images/front-end/cars/skoda/2_Superb_retus.png" alt="" class="img-responsive pull-left margin-bottom-25" width="304" height="263">
-								</div>
-								<button class="btn btn-block btn-default" type="button">DETAIL VOZU</button>
-
-							</div>
-							<div class="col-md-6">
-								
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 well well-sm">
-							<div class="row">	
-								<div class="col-md-6">
-									<h4 class="text-pull-left">
-										ŠKODA Fabia 1.9 TDi, diesel manual
-									</h4>
-								</div>
-								<div class="col-md-6">
-									<span class="label label-default">800,-/den</span>
-								</div>
-							</div>
-							<div class="row">
-								
-							
-								<div class="col-md-6">
-									<img src="{$basePath}/images/front-end/cars/skoda/1_Fabia_retus.png" alt="" class="img-responsive pull-left margin-bottom-25" width="304" height="263">
-								</div>
-								<div class="col-md-6">
-									<ul class="list-unstyled">
-										<li class=""><i></i></li>
-										<li class=""></li>
-										<li class=""></li>
-										<li class=""></li>
-									</ul>
-								</div>
-
-							</div>
-							<div class="row">
-								
-							
-								<div class="col-md-6">
-									<button class="btn btn-block btn-default" type="button">DETAIL VOZU</button>
-								</div>
-								<div class="col-md-6">
-									<button class="btn btn-block btn-primary" type="button">REZERVOVAT</button>
-								</div>
-
-
-							</div>
-						</div>
-					</div>
+					{include content}
 				</div>
-				<!--form finish-->
-				</form>
-				<!-- ---- -->
 			</div>
 
         </div>
     </section>
 
-	{include content}
-
 	{block scripts}
-	<script src="{$basePath}/framework/jquery/jquery.min.js"></script>
     <script src="{$basePath}/framework/bootstrap/js/bootstrap.min.js"></script>
     <script src="{$basePath}/framework/js/classie.js"></script>
     <script src="{$basePath}/framework/js/cbpAnimatedHeader.js"></script>
@@ -439,12 +317,55 @@
     <script src="{$basePath}/framework/mixitup/jquery.mixitup.js"></script>
     <script src="{$basePath}/framework/wow/wow.min.js"></script>
 
-    <!-- Contact Form Scripts -->
-    <script src="{$basePath}/framework/js/contact_me.js"></script>
-    <script src="{$basePath}/framework/js/jqBootstrapValidation.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+
 	<script src="{$basePath}/js/main.js"></script>
+	<script type="text/javascript" src="{$basePath}/js/jquery.nette.js"></script>	
+
+    <!-- Input Mask-->
+    <script src="{$basePath}/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+    <!-- Jquery Validate -->
+    <script src="{$basePath}/js/plugins/validate/jquery.validate.min.js"></script>
+
+    <!-- Date picker -->
+    <script src="{$basePath}/js/plugins/datapicker/bootstrap-datepicker.js"></script>	
+    
+	<script>
+		$(document).ready(function () {			
+			$(".filter input[type='checkbox']").change(function() {
+				checkbox_name= this.name;
+				var checked = $("input[type='checkbox'][name='" + checkbox_name + "']:checked");
+			    if(checked.length == 1){
+					checked.attr("onclick", "this.checked=true;");
+			    }
+			    else {
+				    checked.removeAttr("onclick");
+			    }
+			});
+			
+			window.addEventListener('popstate', function(e) {
+				console.log(e.state);
+			  	$.nette.success(e.state);
+			});			
+		});
+		
+		$('body').on('click', '#back_to_list', function() {
+			$.ajax({
+		    	type: "POST",
+				url: $('#frm-vehiclesFilterForm').attr("action"),
+				data: $('#frm-vehiclesFilterForm').serialize(),
+				success: function(data) {                   
+					$.nette.success(data);
+					window.history.pushState(data, null, "../");
+				}
+			});	
+		});		
+		
+		jQuery.extend(jQuery.validator.messages, {
+			required: "Toto pole je povinné.",
+            email: "Prosím zadejte validní emailovou adresu.",
+		});
+	</script>
 	{/block}
 </body>
 </html>

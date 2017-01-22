@@ -89,11 +89,6 @@ fieldset[disabled] .btn-primary.active {
   background-color: white;
 }
 
-.dropdown-menu {
-	min-width: 0 !important;
-	border-radius: 0 !important;
-	right: -7px !important;
-} 
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;

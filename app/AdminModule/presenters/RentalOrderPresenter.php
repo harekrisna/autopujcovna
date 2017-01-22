@@ -49,7 +49,7 @@ class RentalOrderPresenter extends BasePresenter {
 	protected function createComponentForm() {
 		$form = $this->factory->create($this->record);
 		
-		if($this->record->processed_time != null)
+		if($this->record && $this->record->processed_time != null)
 			$form['processed']->setDefaultValue(TRUE);
 
 		$form->onSuccess[] = function ($form) {

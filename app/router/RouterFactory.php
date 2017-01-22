@@ -24,7 +24,8 @@ class RouterFactory
             'action'    => 'list'
         ));
 
-		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+		$router[] = new Route('vozidlo[/<vehicle_id>]', 'Homepage:vehicleDetail');
+		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:vehiclesList');
 		return $router;
 	}
 

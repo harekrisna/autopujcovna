@@ -1,0 +1,149 @@
+{block content}
+{snippet main}
+<div class="row">
+	<div class="col-md-12 well well-sm">
+		<div class="row">	
+			<div class="col-md-8">
+				<h4 class="text-pull-left">{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</h4>
+			</div>
+			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
+			<div class="col-md-4">
+				<span class="label label-default">800,-/den</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25" width="304" height="263">
+			</div>
+			<div class="col-md-6">
+				<ul class="list-unstyled">
+					<li class=""><i></i></li>
+					<li class=""></li>
+					<li class=""></li>
+					<li class=""></li>
+				</ul>
+			</div>
+		</div>
+		{form rentalOrderForm, class => "form-horizontal ajax"}
+	    <div class="row">
+	        <div class="col-lg-12">
+	            <div class="ibox float-e-margins">
+	                <div class="ibox-title empty">
+	                </div>
+	                <div class="ibox-content">
+                        <div class="form-group">
+                            {label data-vehicle_id, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-vehicle_id, class => "form-control medium"}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-name, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-name, class => "form-control medium"}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-surname, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                <input n:name="data-surname" n:class="form-control, medium, $form['data-surname']->error ? error" />
+                                {if $form['data-surname']->error}{label data-surname, class => "error" }{$form['data-surname']->error}{/label}{/if}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-email, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                <input n:name="data-email" n:class="form-control, medium, $form['data-email']->error ? error" />
+                                {if $form['data-email']->error}{label data-email, class => "error" }{$form['data-email']->error}{/label}{/if}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-phone, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                <input n:name="data-phone" data-mask="+999 999 999 999" n:class="form-control, small, $form['data-phone']->error ? error" />
+                                {if $form['data-phone']->error}{label data-phone, class => "error" }{$form['data-phone']->error}{/label}{/if}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-give_place, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-give_place, class => "form-control medium"}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-give_time, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-give_time}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-take_place, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-take_place, class => "form-control medium"}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-take_time, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-take_time}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            {label data-note, class => "col-sm-3 control-label" /}
+                            <div class="col-sm-9">
+                                {input data-note, class => "form-control large"}
+                            </div>
+                        </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+		<div class="row">
+			<div class="col-md-6">
+				<a id="back_to_list" class="btn btn-block btn-default ajax">ZPĚT NA VÝPIS</a>
+			</div>
+			<div class="col-md-6">
+				{input add, class => "btn btn-primary"}
+			</div>
+		</div>
+        {/form}
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$("#frm-rentalOrderForm").validate();
+		
+		$.fn.datepicker.dates['cs'] = {
+                days: ["Neděle", "Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota"],
+                daysShort: ["Ned", "Pon", "Úte", "Stř", "Čtv", "Pát", "Sob"],
+                daysMin: ["Ne", "Po", "Út", "St", "Čt", "Pá", "So"],
+                months: ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"],
+                monthsShort: ["Led", "Úno", "Bře", "Dub", "Kvě", "Čer", "Čnc", "Srp", "Zář", "Říj", "Lis", "Pro"],
+                today: "Dnes",
+                clear: "Vymazat",
+                monthsTitle: "Měsíc",
+                weekStart: 1,
+                format: "dd.mm.yyyy"
+            };
+            
+        $('div.input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true,
+            language: 'cs',
+        });
+	});
+</script>
+{/snippet}
+{/block}

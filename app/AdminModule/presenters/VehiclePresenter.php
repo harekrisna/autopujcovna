@@ -68,6 +68,7 @@ class VehiclePresenter extends BasePresenter {
 			\Nette\Utils\FileSystem::delete("./images/photos/".$record->photos_folder);
 		}
 		
+		Debugger::fireLog($id);
 		$this->payload->success = $this->model->delete($id);
 		$this->sendPayload();
 	}

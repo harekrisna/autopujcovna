@@ -59,19 +59,26 @@ jQuery.ajaxSetup({
 });
 
 $('body').on('submit', 'form.ajax', function( event ) {
+	var action = $(this).attr("action");
 	$.ajax({
 	    type: "POST",
-	    url: $(this).attr("action"),
+	    url: action,
 	    data: $(this).serialize(),
 	    success: function(data) {                   
 			$.nette.success(data);
+			window.history.pushState(data, null, action);
 	    }
 	});
 	event.preventDefault();
 });
 
-function changeUrl(url) {
-    window.history.pushState(
-      null, null, url
-    );
-}
+$('body').on('click', 'a.ajax', function (event) {
+	var href = this.href;
+	
+	$.get(this.href,function( data ) {
+		$.nette.success(data);
+		window.history.pushState(data, null, href);
+	});
+	
+    event.preventDefault();
+});

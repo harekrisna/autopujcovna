@@ -19,14 +19,13 @@ class DateTimePicker extends \Nette\Forms\Controls\BaseControl {
     }
 
     public function setValue($value) {
-
         if($value) {
             $datetime = DateTime::from($value);
             $this->date = $datetime->format("d.m.Y");
             $this->time = $datetime->format("h:i:00");
         }
         else {
-            $date = $time = NULL;
+            $this->date = $this->time = NULL;
         }
     }
 
@@ -43,7 +42,10 @@ class DateTimePicker extends \Nette\Forms\Controls\BaseControl {
 
     public function getControl() {
         $name = $this->getHtmlName();
+        Debugger::fireLog($this->date);
         $date_input = Html::el('input')->name($name.'[date]')->value($this->date)->class("datetimepicker form-control small")->readonly("readonly");
+        if($this->isRequired())
+        	$date_input->addAttributes(['required' => ""]);
         //$time_input = Html::el('input')->name($name.'[time]')->value($this->time)->class("form-control")->readonly("readonly");
 
         $template = '<div class="input-group date" style="width: 200px; float: left; margin-right: 10px">
