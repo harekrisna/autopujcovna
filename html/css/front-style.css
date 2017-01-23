@@ -1277,3 +1277,35 @@ body.vintage .car-slideshow .owl-controls .owl-next {
 .text-pull-left {
 	text-align: left !important;
 } 
+
+/*** Flash zprávičky ***/
+div.flash {
+  position: fixed;
+  z-index: 10;
+  padding: 20px;
+  top: 40%;
+  left: 50%;
+  border: 2px solid #ddd;
+  font-size: 125%;
+  -moz-box-shadow: 5px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 5px 5px 6px #ccc;
+  box-shadow: 5px 5px 6px #ccc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+div.flash.success {
+  background: #6ea875;
+  color: #131313;
+  border-color: #0b971a;
+}
+div.flash.info {
+  background: #FFF6BF;
+  color: #514721;
+  border-color: #FFD324;
+}
+div.flash.error {
+  background: #FBE3E4;
+  color: #8a1f11;
+  border-color: #FBC2C4;
+}

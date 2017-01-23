@@ -46,8 +46,7 @@ class DateTimePicker extends \Nette\Forms\Controls\BaseControl {
         $date_input = Html::el('input')->name($name.'[date]')->value($this->date)->class("datetimepicker form-control small")->readonly("readonly");
         if($this->isRequired())
         	$date_input->addAttributes(['required' => ""]);
-        //$time_input = Html::el('input')->name($name.'[time]')->value($this->time)->class("form-control")->readonly("readonly");
-
+        
         $template = '<div class="input-group date" style="width: 200px; float: left; margin-right: 10px">
                          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>'.$date_input.'
                      </div>

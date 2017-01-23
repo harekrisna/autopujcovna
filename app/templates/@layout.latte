@@ -301,7 +301,14 @@
 
         </div>
     </section>
-
+    {snippet flashes}
+    {foreach $flashes as $flash}
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+    {/foreach}
+    <script>
+        $('.flash').hide().fadeIn(800).delay(2800).fadeOut(800);
+    </script>
+    {/snippet}
 	{block scripts}
     <script src="{$basePath}/framework/bootstrap/js/bootstrap.min.js"></script>
     <script src="{$basePath}/framework/js/classie.js"></script>

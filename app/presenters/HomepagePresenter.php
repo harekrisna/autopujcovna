@@ -56,11 +56,14 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->rentalOrderFormFactory->create();
 
 		$form->onSuccess[] = function ($form, $values) {
+			$this->flashMessage("Rezervace byla přijata", 'success');
+			
 			if(!$this->isAjax()) {
 				$this->redirect($this->getAction(), $this->getParameter('vehicle_id'));
 			}
 			else {
 				$form->setValues([], true);
+				$this->redrawControl('flashes');
 			}
 		};
 		

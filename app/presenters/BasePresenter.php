@@ -19,4 +19,5 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 
    		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker::register();
 	}
+
 }

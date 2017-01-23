@@ -28,6 +28,7 @@ jQuery.extend({
 			}
 
 			$('.main-ajax-spinner').removeClass('visible');
+			/*
 			if(typeof payload.messages !== 'undefined') {
 				for (i = 0; i < payload.messages.length; i++) {
 					switch(payload.messages[i].type) {
@@ -46,6 +47,7 @@ jQuery.extend({
 					}
 				}
 			}
+			*/
 		}
 	}
 });
