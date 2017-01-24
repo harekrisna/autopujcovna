@@ -277,6 +277,7 @@
 										<td><label n:name="brands:$key"><input class="margin-right-10" n:name="brands:$key">{$label}</label></td>
  										{if $iterator->even}</tr><tr>{/if}
 									{/foreach}
+                                    <td><label for="all-brands"><input id="all-brands" name="all-items" class="margin-right-10" type="checkbox" checked="true">nerozoduje</label></td>
  									</tr>
 								</table>
 							</fieldset>
@@ -285,32 +286,35 @@
 	                            <table>
  									<tr>
 									{foreach $form[bodywork]->items as $key => $label}
-									<td><label n:name="bodywork:$key"><input class="margin-right-10" n:name="bodywork:$key">{$label}</label></td>
-									{if $iterator->even}</tr><tr>{/if}
-								{/foreach}
-								</tr>
+									   <td><label n:name="bodywork:$key"><input class="margin-right-10" n:name="bodywork:$key">{$label}</label></td>
+									   {if $iterator->even}</tr><tr>{/if}
+								    {/foreach}
+                                    <td><label for="all-bodyworks"><input id="all-bodyworks" name="all-items" class="margin-right-10" type="checkbox" checked="true">nerozoduje</label></td>
+								    </tr>
 								</table>
 	                        </fieldset>
 							<fieldset class="filter">
 	                            <legend class="brand-text">{label fuel /}</legend>
 	                            <table>
  									<tr>
-								{foreach $form[fuel]->items as $key => $label}
-									<td><label n:name="fuel:$key"><input class="margin-right-10" n:name="fuel:$key">{$label}</label></td>
-									{if $iterator->even}</tr><tr>{/if}
-								{/foreach}
-								</tr>
+								    {foreach $form[fuel]->items as $key => $label}
+									   <td><label n:name="fuel:$key"><input class="margin-right-10" n:name="fuel:$key">{$label}</label></td>
+									   {if $iterator->even}</tr><tr>{/if}
+								    {/foreach}
+                                    <td><label for="all-fuel"><input id="all-fuel" name="all-items" class="margin-right-10" type="checkbox" checked="true">nerozoduje</label></td>
+								    </tr>
 								</table>
 	                        </fieldset>
 							<fieldset class="filter">
 	                            <legend class="brand-text">{label transmission /}</legend>
 	                            <table>
  									<tr>
-								{foreach $form[transmission]->items as $key => $label}
-									<td><label n:name="transmission:$key"><input class="margin-right-10" n:name="transmission:$key" onclick="this.checked=true;">{$label}</label></td>
-								{if $iterator->even}</tr><tr>{/if}
-								{/foreach}
-								</tr>
+								    {foreach $form[transmission]->items as $key => $label}
+									   <td><label n:name="transmission:$key"><input class="margin-right-10" n:name="transmission:$key" onclick="this.checked=true;">{$label}</label></td>
+								        {if $iterator->even}</tr><tr>{/if}
+								    {/foreach}
+                                    <td><label for="all-transmission"><input id="all-transmission" name="all-items" class="margin-right-10" type="checkbox" checked="true">nerozoduje</label></td>
+								    </tr>
 								</table>
 	                        </fieldset>
 							<div class="col-md-12 form-group">
@@ -367,15 +371,30 @@
 		$(document).ready(function () {			
 			$(".filter input[type='checkbox']").change(function() {
 				checkbox_name= this.name;
-				var checked = $("input[type='checkbox'][name='" + checkbox_name + "']:checked");
+                var checkboxes = $("input[type='checkbox'][name='" + checkbox_name + "']");
+				var checked = checkboxes.filter(":checked");
 			    if(checked.length == 1){
 					checked.attr("onclick", "this.checked=true;");
 			    }
 			    else {
 				    checked.removeAttr("onclick");
 			    }
+
+                all_items_checkbox = $(this).closest('table').find("input[type='checkbox'][name='all-items']");
+
+                if(checkboxes.length == checked.length) {
+                    all_items_checkbox.prop('checked', true);
+                }
+                else {
+                    all_items_checkbox.prop('checked', false);   
+                }
 			});
 			
+            $("fieldset.filter input[name='all-items']").change(function() {
+                $(this).prop('checked', true);
+                $(this).closest('table').find("input[type='checkbox']").prop('checked', true);
+            });
+
 			window.addEventListener('popstate', function(e) {
 			  	$.nette.success(e.state);
 			});			

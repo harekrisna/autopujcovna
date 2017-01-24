@@ -55,6 +55,49 @@ class HomepagePresenter extends BasePresenter {
 		$this->setView("vehiclesList");
 	}
 
+	public function actionSendMail() {
+		/*
+		$latte = new Latte\Engine;		
+		$params = array(
+			'surname' => "TEST",
+			'email' => "TEST@TEST",
+		);
+		
+		$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
+        
+        $mail = new Message;
+		$mail->setFrom("Allrisk <careffective@allrisk.cz>")
+        	 ->addTo("TEST"." <".RESERVATION_CONFIRM_EMAIL.">")
+             ->setSubject("Potvrzení rezervace")
+			 ->setHtmlBody($template);
+             
+        $mailer = new SendmailMailer;
+        $mailer->send($mail);
+        */
+
+        ini_set('display_errors', 1);
+		ini_set('display_startup_errors', 1);
+		error_reporting(E_ALL);
+
+        $to      = 'barta.michal@allrisk.cz';
+		$subject = 'the subject';
+		$message = 'hello';
+		$headers = 'From: careffective@allrisk.cz' . "\r\n" .
+    			   'Reply-To: careffective@allrisk.cz' . "\r\n" .
+    		       'X-Mailer: PHP/' . phpversion();
+
+		mail($to, $subject, $message, $headers);
+
+		$this->sendResponse(new Nette\Application\Responses\TextResponse('$to      = \'barta.michal@allrisk.cz\';<br/>
+		$subject = \'the subject\';<br/>
+		$message = \'hello\';<br/>
+		$headers = \'From: careffective@allrisk.cz\'<br/>
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'Reply-To: careffective@allrisk.cz\'<br/>
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'X-Mailer: PHP/\' . phpversion();<br/>
+<br/>
+		mail($to, $subject, $message, $headers);'));
+	}
+
 	protected function createComponentVehiclesFilterForm() {
 		$form = $this->vehiclesFilterFormFactory->create();
 
@@ -104,5 +147,5 @@ class HomepagePresenter extends BasePresenter {
 		};
 		
 		return $form;
-	}
+	}	
 }

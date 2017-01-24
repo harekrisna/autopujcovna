@@ -42,10 +42,10 @@ class VehiclesFilterFormFactory extends Nette\Object {
 		$form->addCheckboxList('transmission', 'Převodovka:', $transmission);		
 
 		if(empty($_SESSION['filters'])) {
-			$form['brands']->setValue([1, 6]);
-			$form['bodywork']->setValue(["Sedan", "Combi"]);
-			$form['fuel']->setValue(["benzín", "nafta"]);
-			$form['transmission']->setValue(["manuál"]);
+			$form['brands']->setValue($this->brand->findAll()->fetchPairs('id'));
+			$form['bodywork']->setValue($bodyworks);
+			$form['fuel']->setValue($fuel);
+			$form['transmission']->setValue($transmission);
 		}
 		else {
 			$form['brands']->setValue($_SESSION['filters']['brand_id']);
