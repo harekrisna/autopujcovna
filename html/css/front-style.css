@@ -1127,6 +1127,18 @@ footer.footer .copyright p.small {
 .margin-bottom-25 {
 	margin-bottom: 25px;
 }
+.padd-top-10 {
+	padding-top: 10px;
+}
+
+.padd-top-20 {
+	padding-top: 20px;
+}
+
+.padd-left-35 {
+	padding-left: 35px
+}
+
 .btn-color-full {
 	 background: #2188a9;
 	 color: white;
@@ -1355,4 +1367,56 @@ div.flash.error {
 
 header .row .btn-big-font {
 	font-size: 18px;
+}
+
+.btn-price {
+	margin-left: 30px;
+    display: block;
+    width: 334px;
+    height: 46px;
+    line-height: 38px;
+    font-size: 18px;
+}
+
+.picture-shadow {
+	-webkit-box-shadow: 5px 6px 5px -4px rgba(214,214,214,1);
+	-moz-box-shadow: 5px 6px 5px -4px rgba(214,214,214,1);
+	box-shadow: 5px 6px 5px -4px rgba(214,214,214,1);
+}
+
+.car-li-icon {
+	display: block;
+	width: 25px;
+	height: 25px;
+	background-size: 25px 25px;
+	opacity: .7; 
+}
+
+.icon-petrol {
+	background-image: url("../images/front-end/icon/gasoline-pump.png");
+}
+
+.icon-fuel-con {
+	background-image: url("../images/front-end/icon/bar-chart.png")
+}
+
+.icon-gear {
+	background-image: url("../images/front-end/icon/gearbox.png")
+}
+
+.icon-person-limit {
+	background-image: url("../images/front-end/icon/multiple-users-silhouette.png")
+}
+
+
+.list-text {
+	display: block;
+	width: 150px;
+    text-align: left;
+    margin-left: 50px;
+    line-height: 30px;
+}
+
+.list-unstyled li {
+	margin-bottom: 15px;
 }

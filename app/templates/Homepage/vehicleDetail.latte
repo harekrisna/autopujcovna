@@ -8,12 +8,12 @@
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			<div class="col-md-4">
-				<span class="label label-default">800,-/den</span>
+				<div class="label label-default btn-price">800,-/den</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25" width="304" height="263">
+				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow" width="304" height="263">
 			</div>
 			<div class="col-md-6">
 				<ul class="list-unstyled">
