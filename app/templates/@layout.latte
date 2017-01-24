@@ -20,7 +20,7 @@
     <link href="{$basePath}/framework/formstone/background.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/animate.css/animate.min.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/device-mockups/device-mockups.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Inder|Muli" rel="stylesheet">
     <link rel="stylesheet" href="{$basePath}/css/front-style.css">
     
 	<link href="{$basePath}/css/admin/plugins/datapicker/datepicker3.css" rel="stylesheet">    
@@ -159,7 +159,7 @@
 						<div class="col-md-8 form-group">
 							
                             	<div class="input-group input-group-lg">
-                                	<input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Email address...">
+                                	<input type="date" name="FROM" class="form-control" id="FROM" placeholder="OD">
                                 	<span class="input-group-btn">
                                     	<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">X</button>
                                		 </span>
@@ -174,7 +174,7 @@
 						<div class="col-md-4 form-group">
 							
                             	<div class="input-group input-group-lg">
-                                	<input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Email address...">
+                                	<input type="text" name="FROM TIME" class="form-control" id="FROM TIME" placeholder="ČAS">
                                 	<span class="input-group-btn">
                                     	<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">X</button>
                                		 </span>
@@ -189,7 +189,7 @@
 						<div class="col-md-8 form-group">
 							
                             	<div class="input-group input-group-lg">
-                                	<input type="email" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Email address...">
+                                	<input type="name" name="TO" class="form-control" id="DO" placeholder="DO">
                                 	<span class="input-group-btn">
                                     	<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">X</button>
                                		 </span>
@@ -204,7 +204,7 @@
 						<div class="col-md-4 form-group">
 							
                             	<div class="input-group input-group-lg">
-                                	<input type="text" name="adress-to" class="form-control" id="mce-EMAIL" placeholder="Email address...">
+                                	<input type="text" name="TIME TO" class="TIME TO" id="TIME TO" placeholder="ČAS">
                                 	<span class="input-group-btn">
                                     	<button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">X</button>
                                		 </span>
@@ -215,7 +215,7 @@
                             </div>
 						</div>
 						<div class="col-md-12 form-group">
-							<hr />
+							<legend></legend>
 						</div>
 
 
@@ -268,7 +268,7 @@
  								<table>
  									<tr>
 									{foreach $form[brands]->items as $key => $label}
-										<td><label n:name="brands:$key"><input n:name="brands:$key">{$label}</label></td>
+										<td><label n:name="brands:$key"><input class="margin-right-10" n:name="brands:$key">{$label}</label></td>
  										{if $iterator->even}</tr><tr>{/if}
 									{/foreach}
  									</tr>
@@ -279,7 +279,7 @@
 	                            <table>
  									<tr>
 									{foreach $form[bodywork]->items as $key => $label}
-									<td><label n:name="bodywork:$key"><input n:name="bodywork:$key">{$label}</label></td>
+									<td><label n:name="bodywork:$key"><input class="margin-right-10" n:name="bodywork:$key">{$label}</label></td>
 									{if $iterator->even}</tr><tr>{/if}
 								{/foreach}
 								</tr>
@@ -290,7 +290,7 @@
 	                            <table>
  									<tr>
 								{foreach $form[fuel]->items as $key => $label}
-									<td><label n:name="fuel:$key"><input n:name="fuel:$key">{$label}</label></td>
+									<td><label n:name="fuel:$key"><input class="margin-right-10" n:name="fuel:$key">{$label}</label></td>
 									{if $iterator->even}</tr><tr>{/if}
 								{/foreach}
 								</tr>
@@ -301,14 +301,14 @@
 	                            <table>
  									<tr>
 								{foreach $form[transmission]->items as $key => $label}
-									<td><label n:name="transmission:$key"><input n:name="transmission:$key" onclick="this.checked=true;">{$label}</label></td>
+									<td><label n:name="transmission:$key"><input class="margin-right-10" n:name="transmission:$key" onclick="this.checked=true;">{$label}</label></td>
 								{if $iterator->even}</tr><tr>{/if}
 								{/foreach}
 								</tr>
 								</table>
 	                        </fieldset>
 							<div class="col-md-12 form-group">
-								<hr />
+								<legend></legend>
 								{input search, class => "btn btn-large btn-block btn-primary"}
 							</div>
 						{/form}
