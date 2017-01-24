@@ -21,6 +21,7 @@
                                 <th class="noselect">Karosérie</th>
                                 <th class="noselect">Palivo</th>
                                 <th class="noselect">Převodovka</th>
+                                <th class="noselect">Půjčovné na den</th>
                                 <th data-sort-ignore="true" class="noselect">Poznámka</th>
                                 <th data-sort-ignore="true" data-name="controls" style="width: 62px"></th>
                             </tr>
@@ -34,6 +35,7 @@
                                 <td>{$record->bodywork}</td>
                                 <td>{$record->fuel}</td>
                                 <td>{$record->transmission}</td>
+                                <td>{$record->price}</td>
                                 <td>{$record->note}</td>
                                 <td class="controls"> 
                                     <a class="row-photo" n:href="Photo:detail, $record->id"><span class="glyphicon glyphicon-picture"></span></a>

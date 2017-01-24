@@ -5,6 +5,9 @@ namespace App\Presenters;
 use Nette;
 use App\Model;
 use Tracy\Debugger;
+use Latte;
+use Nette\Mail\Message;
+use Nette\Mail\SendmailMailer;
 use App\Forms\VehiclesFilterFormFactory;
 use App\Forms\RentalOrderFormFactory;
 
@@ -19,14 +22,22 @@ class HomepagePresenter extends BasePresenter {
 	public function renderVehiclesList() {
 		if(empty($_SESSION['filters'])) {
 			$this->template->vehicles = $this->vehicle->findAll()
-													  ->order('brand_id');
+													  ->order('price DESC');
 		}
 		else {
-			$this->template->vehicles = $this->vehicle->findBy(['brand_id' => $_SESSION['filters']['brand_id'],
-														 		'bodywork' => $_SESSION['filters']['bodywork'],
-														 		'fuel' => $_SESSION['filters']['fuel'],
-														 		'transmission' => $_SESSION['filters']['transmission']])
-													  ->order('brand_id');
+			$vehicles = $this->vehicle->findBy(['brand_id' => $_SESSION['filters']['brand_id'],
+										 		'bodywork' => $_SESSION['filters']['bodywork'],
+										 		'fuel' => $_SESSION['filters']['fuel'],
+										 		'transmission' => $_SESSION['filters']['transmission']]);
+
+			if(empty($_SESSION['order_by'])) {
+				$vehicles = $vehicles->order('brand_id, type');
+			}
+			else {
+				$vehicles = $vehicles->order($_SESSION['order_by']);	
+			}
+
+			$this->template->vehicles = $vehicles;
 			$this->redrawControl('main');
 		}
 	}
@@ -36,6 +47,12 @@ class HomepagePresenter extends BasePresenter {
 		$this['rentalOrderForm']['data']['vehicle_id']->setValue($vehicle_id);
 		$this['rentalOrderForm']->setDefaults([]);
 		$this->redrawControl('main');
+	}
+
+	public function handleSetOrderBy($order_by) {
+		$order_by == "price" ? $_SESSION['order_by'] = "price DESC" : "";
+		$order_by == "title" ? $_SESSION['order_by'] = "brand_id.title ASC, type ASC" : "";
+		$this->setView("vehiclesList");
 	}
 
 	protected function createComponentVehiclesFilterForm() {
@@ -56,6 +73,25 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->rentalOrderFormFactory->create();
 
 		$form->onSuccess[] = function ($form, $values) {
+			try {
+				$latte = new Latte\Engine;		
+				$params = array(
+					'surname' => $values['data']['surname'],
+					'email' => $values['data']['email'],
+				);
+				
+				$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
+		        
+		        $mail = new Message;
+				$mail->setFrom("Allrisk <careffective@allrisk.cz>")
+		        	 ->addTo($values['data']['surname']." <".RESERVATION_CONFIRM_EMAIL.">")
+		             ->setSubject("Potvrzení rezervace")
+					 ->setHtmlBody($template);
+		             
+		        $mailer = new SendmailMailer;
+		        $mailer->send($mail);
+		    } catch(Nette\Mail\SendException $e) {}
+
 			$this->flashMessage("Rezervace byla přijata", 'success');
 			
 			if(!$this->isAjax()) {
@@ -68,5 +104,5 @@ class HomepagePresenter extends BasePresenter {
 		};
 		
 		return $form;
-	}	
+	}
 }
