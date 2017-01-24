@@ -236,7 +236,7 @@
                             	</div>
 						</div>
 						<div class="col-md-12 form-group">
-							<hr />
+							<legend></legend>
 						</div>
 						<div class="col-lg-12 form-group">
 							<div class="input-group input-group-lg">
@@ -264,28 +264,48 @@
 								}
 							</style>
 							<fieldset class="filter">
-	                            <legend>{label brands /}</legend>
-								{foreach $form[brands]->items as $key => $label}
-									<label n:name="brands:$key"><input n:name="brands:$key">{$label}</label>
+								<legend class="brand-text">{label brands /}</legend>
+ 								<table>
+ 									<tr>
+									{foreach $form[brands]->items as $key => $label}
+										<td><label n:name="brands:$key"><input n:name="brands:$key">{$label}</label></td>
+ 										{if $iterator->even}</tr><tr>{/if}
+									{/foreach}
+ 									</tr>
+								</table>
+							</fieldset>
+							<fieldset class="filter">
+	                            <legend class="brand-text">{label bodywork /}</legend>
+	                            <table>
+ 									<tr>
+									{foreach $form[bodywork]->items as $key => $label}
+									<td><label n:name="bodywork:$key"><input n:name="bodywork:$key">{$label}</label></td>
+									{if $iterator->even}</tr><tr>{/if}
 								{/foreach}
+								</tr>
+								</table>
 	                        </fieldset>
 							<fieldset class="filter">
-	                            <legend>{label bodywork /}</legend>
-								{foreach $form[bodywork]->items as $key => $label}
-									<label n:name="bodywork:$key"><input n:name="bodywork:$key">{$label}</label>
-								{/foreach}
-	                        </fieldset>
-							<fieldset class="filter">
-	                            <legend>{label fuel /}</legend>
+	                            <legend class="brand-text">{label fuel /}</legend>
+	                            <table>
+ 									<tr>
 								{foreach $form[fuel]->items as $key => $label}
-									<label n:name="fuel:$key"><input n:name="fuel:$key">{$label}</label>
+									<td><label n:name="fuel:$key"><input n:name="fuel:$key">{$label}</label></td>
+									{if $iterator->even}</tr><tr>{/if}
 								{/foreach}
+								</tr>
+								</table>
 	                        </fieldset>
 							<fieldset class="filter">
-	                            <legend>{label transmission /}</legend>
+	                            <legend class="brand-text">{label transmission /}</legend>
+	                            <table>
+ 									<tr>
 								{foreach $form[transmission]->items as $key => $label}
-									<label n:name="transmission:$key"><input n:name="transmission:$key" onclick="this.checked=true;">{$label}</label>
+									<td><label n:name="transmission:$key"><input n:name="transmission:$key" onclick="this.checked=true;">{$label}</label></td>
+								{if $iterator->even}</tr><tr>{/if}
 								{/foreach}
+								</tr>
+								</table>
 	                        </fieldset>
 							<div class="col-md-12 form-group">
 								<hr />

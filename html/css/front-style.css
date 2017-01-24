@@ -1309,3 +1309,27 @@ div.flash.error {
   color: #8a1f11;
   border-color: #FBC2C4;
 }
+
+#reservation-form .filter {
+	padding: 10px !important;
+	margin-bottom: 25px;
+}
+
+#reservation-form .filter table {
+	margin: 0 auto;
+}
+
+#reservation-form .filter table td {
+	text-align: left;
+	width: 150px;
+}
+
+#reservation-form .filter .brand-text {
+	font-size: 18px !important;
+	text-align: left;
+	padding-left: 15px;
+}
+
+#reservation-form .filter table {
+	margin: -17px 0 0 17px;
+}
