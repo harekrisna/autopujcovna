@@ -38,10 +38,6 @@ class VehicleFormFactory extends Nette\Object {
 		$data->addSelect("bodywork", "Karoserie", ['Sedan' => 'Sedan', 'Liftback' => 'Liftback', 'Hatchback' => 'Hatchback', 'Limuzína' => 'Limuzína', 'Combi' => 'Combi', 'MPV' => 'MPV', 'SUV' => 'SUV', 'Crossover' => 'Crossover', 'Terénní vůz' => 'Terénní vůz', 'Pick-Up' => 'Pick-Up', 'Kabriolet' => 'Kabriolet', 'Roadster' => 'Roadster', 'Kupé' => 'Kupé']);
 		$data->addSelect("fuel", "Palivo", ['benzín' => 'benzín', 'nafta' => 'nafta', 'LPG' => 'LPG', 'CNG' => 'CNG']);
 		$data->addSelect("transmission", "Řazení", ['manuál' => 'manuál', 'automat' => 'automat']);
-		$data->addText('price', 'Půjčovné na den')
-			 ->setType('number')
-			 ->setAttribute('min', 0);
-
 		$data->addText("note", "Poznámka");
 
 	    $form->addSubmit('add', 'Přidat automobil');

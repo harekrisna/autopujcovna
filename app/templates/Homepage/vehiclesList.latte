@@ -1,9 +1,9 @@
 {block content}
 {snippet main}
-<div class="row">
-	<div class="col-md-12 well" id="filter_orderby">
+<div class="row ">
+	<div class="col-md-12 well ">
 		<span class="pull-left">vyhledáno: {$vehicles->count()} automobilu</span>
-		<span class="pull-right">seřadit podle: <a n:href="setOrderBy!, price" class="ajax">cena</a> <a n:href="setOrderBy!, title" class="ajax">název</a></span>
+		<span class="pull-right">seřadit podle: cena název</span>
 	</div>
 </div>
 {foreach $vehicles as $vehicle}
@@ -15,7 +15,7 @@
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			<div class="col-md-4">
-				<span class="label label-default">{$vehicle->price},-/den</span>
+				<span class="label label-default">800,-/den</span>
 			</div>
 		</div>
 		<div class="row">
@@ -24,7 +24,7 @@
 			</div>
 			<div class="col-md-6">
 				<ul class="list-unstyled">
-					<li class=""></li>
+					<li class=""><i></i></li>
 					<li class=""></li>
 					<li class=""></li>
 					<li class=""></li>

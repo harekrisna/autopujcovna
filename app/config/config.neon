@@ -14,8 +14,12 @@ application:
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+constants:
+	USER_AVATARS_IMG_FOLDER = user_avatars
+
 session:
 	expiration: 14 days
+
 
 services:
 	- App\AdminModule\Model\UserManager
