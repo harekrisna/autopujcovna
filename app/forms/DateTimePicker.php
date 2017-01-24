@@ -42,7 +42,6 @@ class DateTimePicker extends \Nette\Forms\Controls\BaseControl {
 
     public function getControl() {
         $name = $this->getHtmlName();
-        Debugger::fireLog($this->date);
         $date_input = Html::el('input')->name($name.'[date]')->value($this->date)->class("datetimepicker form-control small")->readonly("readonly");
         if($this->isRequired())
         	$date_input->addAttributes(['required' => ""]);
