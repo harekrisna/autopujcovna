@@ -371,11 +371,10 @@
 			});
 			
 			window.addEventListener('popstate', function(e) {
-				console.log(e.state);
 			  	$.nette.success(e.state);
 			});			
 		});
-		
+
 		$('body').on('click', '#back_to_list', function() {
 			$.ajax({
 		    	type: "POST",
