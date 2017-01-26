@@ -36,7 +36,7 @@ class RentalOrderFormFactory extends Nette\Object {
 		$data->addText('surname', 'Příjmení', 512)
 		 	 ->setRequired('Zadejte jméno prosím.');
 		 	 
-		$data->addText('email', 'Email:', 30, 255)
+		$data->addText('email', 'Email', 30, 255)
 			 ->setType('email')
 			 ->setRequired('Zadejte email prosím.')
 			 ->addCondition($form::FILLED)

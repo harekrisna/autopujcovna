@@ -8,7 +8,7 @@
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			<div class="col-md-4">
-				<div class="label label-default btn-price">800,-/den</div>
+				<div class="label label-default btn-price">{$vehicle->price},-/den</div>
 			</div>
 		</div>
 		<div class="row">
@@ -31,76 +31,61 @@
 	                <div class="ibox-title empty">
 	                </div>
 	                <div class="ibox-content">
+                        <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-vehicle_id, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                {input data-vehicle_id, class => "form-control medium"}
+                                {input data-name, class => "form-control medium", placeholder => $form['data-name']->caption}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-name, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                {input data-name, class => "form-control medium"}
-                            </div>
-                        </div>
-                        <div class="hr-line-dashed"></div>
-                        <div class="form-group">
-                            {label data-surname, class => "col-sm-3 control-label" /}
-                            <div class="col-sm-9">
-                                <input n:name="data-surname" n:class="form-control, medium, $form['data-surname']->error ? error" />
+                                <input n:name="data-surname" n:class="form-control, medium, $form['data-surname']->error ? error" placeholder="{$form['data-surname']->caption}" />
                                 {if $form['data-surname']->error}{label data-surname, class => "error" }{$form['data-surname']->error}{/label}{/if}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-email, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                <input n:name="data-email" n:class="form-control, medium, $form['data-email']->error ? error" />
+                                <input n:name="data-email" n:class="form-control, medium, $form['data-email']->error ? error" placeholder="{$form['data-email']->caption}" />
                                 {if $form['data-email']->error}{label data-email, class => "error" }{$form['data-email']->error}{/label}{/if}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-phone, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                <input n:name="data-phone" data-mask="+999 999 999 999" n:class="form-control, small, $form['data-phone']->error ? error" />
+                                <input n:name="data-phone" data-mask="+999 999 999 999" n:class="form-control, small, $form['data-phone']->error ? error" placeholder="{$form['data-phone']->caption}" />
                                 {if $form['data-phone']->error}{label data-phone, class => "error" }{$form['data-phone']->error}{/label}{/if}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-give_place, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                {input data-give_place, class => "form-control medium"}
+                                {input data-give_place, class => "form-control medium", placeholder => $form['data-give_place']->caption}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-give_time, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
                                 {input data-give_time}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-take_place, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                {input data-take_place, class => "form-control medium"}
+                                {input data-take_place, class => "form-control medium", placeholder => $form['data-take_place']->caption}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-take_time, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
                                 {input data-take_time}
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                            {label data-note, class => "col-sm-3 control-label" /}
                             <div class="col-sm-9">
-                                {input data-note, class => "form-control large"}
+                                {input data-note, class => "form-control large", placeholder => $form['data-note']->caption}
                             </div>
                         </div>
 	                </div>
@@ -113,6 +98,7 @@
 				<a id="back_to_list" class="btn btn-block btn-default">ZPĚT NA VÝPIS</a>
 			</div>
 			<div class="col-md-6">
+                {input data-vehicle_id, class => "form-control medium"}
 				{input add, class => "btn btn-primary btn-block"}
 			</div>
 		</div>
