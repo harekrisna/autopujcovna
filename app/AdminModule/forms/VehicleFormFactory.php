@@ -47,7 +47,7 @@ class VehicleFormFactory extends Nette\Object {
 			 ->setType('number')
 			 ->setAttribute('min', 0);
 
-		$data->addText('price', 'Půjčovné na den')
+		$data->addText('price', 'Půjčovné')
 			 ->setType('number')
 			 ->setAttribute('min', 0);
 
