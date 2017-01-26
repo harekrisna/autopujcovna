@@ -11,6 +11,10 @@
     <meta name="author" content="">
 	<title n:snippet="title">{ifset title}{include title|striptags} | {/ifset}Car Effective</title>
 	<script src="{$basePath}/framework/jquery/jquery.min.js"></script>
+
+	<!-- Jquery paging -->
+    <script src="{$basePath}/js/plugins/jquery-paging/jquery.twbsPagination.min.js"></script>
+
 	<link href="{$basePath}/framework/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="{$basePath}/framework/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css">
@@ -21,8 +25,7 @@
     <link href="{$basePath}/framework/animate.css/animate.min.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/device-mockups/device-mockups.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Bitter|Inder|Muli" rel="stylesheet">
-    <link rel="stylesheet" href="{$basePath}/css/front-style.css">
-    
+    <link rel="stylesheet" href="{$basePath}/css/front-style.css">   
 	<link href="{$basePath}/css/admin/plugins/datapicker/datepicker3.css" rel="stylesheet">    
 	{block head}{/block}
 </head>
@@ -366,7 +369,7 @@
 
     <!-- Date picker -->
     <script src="{$basePath}/js/plugins/datapicker/bootstrap-datepicker.js"></script>	
-    
+
 	<script>
 		$(document).ready(function () {			
 			$(".filter input[type='checkbox']").change(function() {

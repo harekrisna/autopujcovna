@@ -8,7 +8,7 @@ body {
 .content-row {
   margin-top: 30px;
 }
-section {
+section#our-cars {
   padding: 100px 0;
 }
 .bg-gray {
@@ -1382,6 +1382,14 @@ header .row .btn-big-font {
 	-webkit-box-shadow: 5px 6px 5px -4px rgba(214,214,214,1);
 	-moz-box-shadow: 5px 6px 5px -4px rgba(214,214,214,1);
 	box-shadow: 5px 6px 5px -4px rgba(214,214,214,1);
+}
+
+.picture-detail {
+  height: 170px;
+}
+
+section.vehicles-list {
+  height: 981px;
 }
 
 .car-li-icon {

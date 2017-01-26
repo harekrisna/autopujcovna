@@ -21,8 +21,8 @@ class HomepagePresenter extends BasePresenter {
 
 	public function renderVehiclesList() {
 		if(empty($_SESSION['filters'])) {
-			$this->template->vehicles = $this->vehicle->findAll()
-													  ->order('price DESC');
+			$vehicles = $this->vehicle->findAll()
+									  ->order('price DESC');
 		}
 		else {
 			$vehicles = $this->vehicle->findBy(['brand_id' => $_SESSION['filters']['brand_id'],
@@ -36,10 +36,11 @@ class HomepagePresenter extends BasePresenter {
 			else {
 				$vehicles = $vehicles->order($_SESSION['order_by']);	
 			}
-
-			$this->template->vehicles = $vehicles;
-			$this->redrawControl('main');
 		}
+		
+		$this->template->vehicles = $vehicles;
+		$this->template->paginator_pages = ceil($vehicles->count()/3);
+		$this->redrawControl('main');
 	}
 	
 	public function renderVehicleDetail($vehicle_id) {

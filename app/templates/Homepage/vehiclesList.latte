@@ -7,11 +7,12 @@
 	</div>
 </div>
 {foreach $vehicles as $vehicle}
+{if $iterator->first}<section id="page-1" class="vehicles-list">{/if}
 <div class="row">
 	<div class="col-md-12 well well-sm">
 		<div class="row">	
 			<div class="col-md-6">
-				<h4 class="text-pull-left">{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</h4>
+				<h4 class="text-pull-left">{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}</h4>
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			<div class="col-md-4">
@@ -20,13 +21,13 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow" width="304" height="263">
+				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow picture-detail" width="304" height="263">
 			</div>
 			<div class="col-md-6">
 				<ul class="list-unstyled padd-top-20 padd-left-35">
-					<li class=""><i class="car-li-icon icon-petrol"><span class="list-text">diesel</span></i></li>
+					<li class=""><i class="car-li-icon icon-petrol"><span class="list-text">{$vehicle->fuel}</span></i></li>
 					<li class=""><i class="car-li-icon icon-fuel-con"><span class="list-text">6,5L/100km</span></i></li>
-					<li class=""><i class="car-li-icon icon-gear"><span class="list-text">automat</span></i></li>
+					<li class=""><i class="car-li-icon icon-gear"><span class="list-text">{$vehicle->transmission}</span></i></li>
 					<li class=""><i class="car-li-icon icon-person-limit"><span class="list-text">pro 5 osob</span></i></li>
 				</ul>
 			</div>
@@ -35,10 +36,26 @@
 			<div class="col-md-12">
 				<a n:href="vehicleDetail, $vehicle->id" class="btn btn-block btn-default ajax">DETAIL VOZU</a>
 			</div>
-
 		</div>
 	</div>
 </div>
+{if $iterator->counter % 3 == 0}
+</section>
+<section id="page-{($iterator->counter/3)+1}" class="vehicles-list">
+{/if}
+{if $iterator->last}</section>{/if}
 {/foreach}
+<ul id="pagination" class>="pagination-sm"></ul>
+<script type="text/javascript">
+	$('#pagination').twbsPagination({
+        totalPages: {$paginator_pages},
+        visiblePages: 7,
+        onPageClick: function (event, page) {
+        	console.log($('section.vehicles-list'));
+        	$('section.vehicles-list').hide();
+        	$('section#page-'+page).fadeIn();
+        }
+    });
+</script>
 {/snippet}
 {/block}
