@@ -84,3 +84,4 @@ function loading(button, text) {
 
     return loading;
 }
+

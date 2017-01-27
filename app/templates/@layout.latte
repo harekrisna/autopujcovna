@@ -60,7 +60,7 @@
                         <a class="page-scroll" href="#contact">KONTAKT</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#facebook">f</a>
+                        <a class="page-scroll" href="https://www.facebook.com/allriskcz/">f</a>
                     </li>
                     <li>
 				        <a class="dropdown-toggle" data-toggle="dropdown">
@@ -83,7 +83,7 @@
             <div class="brand-name">S NAŠÍ AUTOPŮJČOVNOU</div>
             <div class="brand-name-subtext margin-top-25">MŮŽETE PLÁNOVAT SVOJÍ CESTU JIŽ TEĎ</div>
 			<div class="row">
-				<a href="#reservation-form" data-toggle="modal" class="btn btn-color-full margin-top-50 width-300 pull-left page-scroll"><span class="btn-big-font page-scroll">REZERVACE</span></a>
+				<a href="#reservation-form" class="btn btn-color-full margin-top-50 width-300 pull-left page-scroll"><span class="btn-big-font page-scroll">REZERVACE</span></a>
 
 			</div>
            <div class="row">
@@ -328,13 +328,17 @@
 								{input search, class => "btn btn-large btn-block btn-primary"}
 							</div>
 							<div class="col-md-12 form-group color-black">
-								<i class="">
-									
-								</i>
-								<div class="text-field">
-									
-								
-								<p>v případě potřeby nás kontaktujte na tel. číslo <span>777 491 900</span></p>
+								<div class="text-field padd-left-15 padd-top-20">
+									<div class="text-field-detail">
+										<p>
+											<span class="text-size">v případě potřeby nás kontaktujte <br> na tel. číslo 
+											</span>
+										</p>
+										<p>
+											<i class="icon-35 phone-icon pull-left margin-left-25"></i>
+											<span class="phone-number pull-left margin-left-15">777 491 900</span>
+										</p>
+									</div>
 								</div>
 							</div>
 						{/form}
@@ -347,12 +351,45 @@
 
         </div>
     </section>
+    <section id="about_us">
+    	<div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-lg-12 wow fadeIn">
+                    <h1>ZARUČENÁ KVALITA NAŠÍCH SLUŽEB</h1>
+                    <hr class="colored about-us-line thick">
+                </div>
+            </div>
+        </div>
+    	<div class="row">
+    		<div class="col-xs-6 col-sm-3">
+    			dd
+    		</div>
+    		<div class="col-xs-6 col-sm-3">
+    			df
+    		</div>
+    		<div class="col-xs-6 col-sm-3">
+    			fd
+    		</div>
+    		<div class="col-xs-6 col-sm-3">
+    			fd
+    		</div>
+    	</div>
+    </section>
     {snippet flashes}
+    	<div class="flash success">Zpráva</div>
     {foreach $flashes as $flash}
         <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
     {/foreach}
     <script>
         $('.flash').hide().fadeIn(800).delay(2800).fadeOut(800);
+
+        $('a.page-scroll').bind('click', function(event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+        }, 1250, 'easeInOutExpo');
+        event.preventDefault();
+    });
     </script>
     {/snippet}
 	{block scripts}
