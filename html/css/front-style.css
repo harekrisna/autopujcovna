@@ -266,7 +266,7 @@ hr.colored {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:hover {
-  color: rgba(255, 255, 255, 0.5);
+  color: #2188a9;
 }
 @media (min-width: 768px) {
   .navbar-default .navbar-nav > .active > a,
@@ -1490,12 +1490,13 @@ section.vehicles-list {
 	font-size: 26px;
 }
 
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
-	background-color: #2188a9 !important;
-    border-color: #2188a9 !important;
-
-.pagination>li>a, .pagination>li>span {
-	color: #2188a9 !important;
+.box-fluid-content {
+	display: block;
+	width: 95%;
+	height: 300px;
+	margin: auto;
+	background: no-repeat center center;
+	background-size: 100% auto;
 }
 
 
