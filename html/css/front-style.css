@@ -1475,28 +1475,33 @@ section.vehicles-list {
 	text-align: left;
 }
 
-.text-field .text-field-detail {
+.text-field .text-field-reservation {
 	display: block;
 	width: 90%;
 	height: 60px;
-	font-size: 12px !important;
 }
 
-.text-field .text-field-detail .text-size{
+.text-field .text-field-reservation .text-size{
 	font-size: 16px !important;
 }
 
-.text-field .text-field-detail .phone-number {
+.text-field .text-field-reservation .phone-number {
 	font-size: 26px;
 }
 
 .box-fluid-content {
 	display: block;
 	width: 95%;
-	height: 300px;
+	height: auto;
 	margin: auto;
 	background: no-repeat center center;
 	background-size: 100% auto;
 }
 
+.text-field-about-us {
+	width: 100%;
+	height: 150px;
+	text-align: justify;
+	padding: 10px 5px 0 5px;
 
+}
