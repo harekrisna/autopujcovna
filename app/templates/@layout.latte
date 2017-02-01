@@ -459,7 +459,6 @@
 	</section>
 
     {snippet flashes}
-    	<div class="flash success">Zpráva</div>
     {foreach $flashes as $flash}
         <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
     {/foreach}
