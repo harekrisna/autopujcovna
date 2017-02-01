@@ -17,6 +17,9 @@ section#about-us {
 section#reservation-form {
   padding: 100px 0;
 }
+section#facility {
+  padding: 100px 0;
+}
 section#contact-form {
   padding: 100px 0;
 }
@@ -180,8 +183,11 @@ hr.colored {
   hr.reservation-line {
     max-width: 700px !important;
   }
-   hr.about-us-line {
+  hr.about-us-line {
     max-width: 1080px !important;
+  }
+  hr.facility-line {
+    max-width: 1220px !important;
   }
   hr.left {
     margin: 20px auto 20px 0;
@@ -1125,6 +1131,9 @@ footer.footer .copyright p.small {
 	margin-right: 10px;
 }
 
+.margin-top-10 {
+	margin-top: 10px;
+}
 .margin-top-25 {
 	margin-top: 25px;
 }
@@ -1157,6 +1166,9 @@ footer.footer .copyright p.small {
 
 .padd-top-20 {
 	padding-top: 20px;
+}
+.padd-top-55 {
+	padding-top: 55px;
 }
 .padd-left-15 {
 	padding-left: 15px;
@@ -1498,8 +1510,6 @@ section.vehicles-list {
 	width: 95%;
 	height: auto;
 	margin: auto;
-	background: no-repeat center center;
-	background-size: 100% auto;
 }
 
 .text-field-about-us {
@@ -1507,7 +1517,6 @@ section.vehicles-list {
 	height: auto;
 	text-align: justify;
 	padding: 10px 5px 0 5px;
-
 }
 .dropdown-menu {
 	min-width: 50px !important;
@@ -1540,4 +1549,8 @@ section#contact-form .form-control:focus {
 	font-size: 20px;
 	line-height: 33px;
 	letter-spacing: 0.7px;
+}
+
+.opacity-4 {
+	opacity: 0.4;
 }
