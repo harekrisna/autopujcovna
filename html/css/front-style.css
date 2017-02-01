@@ -35,16 +35,13 @@ section#contact-form {
 .owl-theme .owl-controls .owl-page span {
   background: rgba(34, 34, 34, 0.5);
 }
-input.form-control {
-  border-radius: 0 !important;
-}
+
 input.form-control:focus {
   border-color: #2188a9;
   box-shadow: none;
 }
 .btn,
 .input-group-btn {
-  border-radius: 0 !important;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
@@ -1135,6 +1132,10 @@ footer.footer .copyright p.small {
 .margin-top-50 {
 	margin-top: 50px;
 }
+.margin-top-75 {
+	margin-top: 75px;
+}
+
 
 .margin-bottom-75 {
 	margin-bottom: 75px !important;
@@ -1200,7 +1201,6 @@ footer.footer .copyright p.small {
   outline: none;
 }
 .btn {
-  border-radius: 0;
   padding: 12px 18px;
   text-transform: uppercase;
   font-weight: 900;
@@ -1448,6 +1448,9 @@ section.vehicles-list {
 .icon-person-limit {
 	background-image: url("../images/front-end/icon/multiple-users-silhouette.png")
 }
+..icon-car {
+	background-image: url("../images/front-end/icon/car.png")
+}
 
 
 .list-text {
@@ -1510,4 +1513,31 @@ section.vehicles-list {
 	min-width: 50px !important;
 } 
 
+section#contact-form .form-group input,
+section#contact-form .form-group textarea {
+    padding: 16px;
+    resize: none;
+}
+section#contact-form .form-group input.form-control {
+    height: auto;
+}
+section#contact-form .form-group textarea.form-control {
+    height: 236px;
+}
+section#contact-form .form-control:focus {
+    border-color: #fed136;
+    box-shadow: none;
+}
+.form-control {
+	font-size: 16px !important;
+}
 
+.contact-detail {
+	padding-left: 25px;
+	display: block;
+	text-transform: uppercase;
+	text-align: left;
+	font-size: 20px;
+	line-height: 33px;
+	letter-spacing: 0.7px;
+}
