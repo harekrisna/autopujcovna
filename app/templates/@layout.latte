@@ -60,7 +60,7 @@
                         <a class="page-scroll" href="#contact-form">KONTAKT</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="https://www.facebook.com/allriskcz/">f</a>
+                        <a class="page-scroll" href="https://www.facebook.com/allriskcz/"  target="_blank">f</a>
                     </li>
                     <li>
 				        <a class="dropdown-toggle" data-toggle="dropdown">
@@ -469,26 +469,26 @@
         <div class="container">
 	    	<div class="row">
 				<div class="content-row">
-		    		<div class="col-xs-6 col-sm-3 opacity-4">
-		    			<div class="box-fluid-content">
-		    				<img src="{$basePath}/images/front-end/companys/vw.jpg" alt="company_car_vw" width="160" height="165" />
+		    		<div class="col-xs-6 col-sm-3 opacity-4 ">
+		    			<div class="box-fluid-content center-block">
+		    				<img src="{$basePath}/images/front-end/companys/vw.jpg" alt="company_car_vw" width="140" height="145" />
 						</div>
 						
 		    		</div>
-		    		<div class="col-xs-6 col-sm-3 ">
-		    			<div class="box-fluid-content padd-top-55 opacity-4">
-		    				<img src="{$basePath}/images/front-end/companys/ford.jpg" alt="company_car_ford" width="220" height="90" />
+		    		<div class="col-xs-6 col-sm-3 center-block">
+		    			<div class="box-fluid-content padd-top-55 opacity-4 ">
+		    				<img src="{$basePath}/images/front-end/companys/ford.jpg" alt="company_car_ford" width="180" height="70" />
 		    			</div>
 
 		    		</div>
 		    		<div class="col-xs-6 col-sm-3 ">
-		    			<div class="box-fluid-content opacity-4">
-		    				<img src="{$basePath}/images/front-end/companys/bmw.png" alt="company_car_bmw" width="180" height="180" />
+		    			<div class="box-fluid-content opacity-4 center-block">
+		    				<img src="{$basePath}/images/front-end/companys/bmw.png" alt="company_car_bmw" width="158" height="158" />
 		    			</div>
 		    		</div>
-		    		<div class="col-xs-6 col-sm-3 padd-top-10 opacity-4">
+		    		<div class="col-xs-6 col-sm-3 padd-top-10 opacity-4 center-block">
 		    			<div class="box-fluid-content">
-		    				<img src="{$basePath}/images/front-end/companys/skoda.jpg" alt="company_car_skoda" width="155" height="160" />
+		    				<img src="{$basePath}/images/front-end/companys/skoda.jpg" alt="company_car_skoda" width="140" height="140" />
 		    			</div>
 		    		</div>
 				</div>
@@ -496,10 +496,24 @@
 		</div>
     </section>
     <footer>
-    	
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4">
+    				
+    			</div>
+    			<div class="col-md-4">
+    				
+    			</div>
+    			<div class="col-md-4">
+    				
+    			</div>
+    		</div>
+    		
+    	</div>
     </footer>
 
     {snippet flashes}
+    	<div class="flash success">Zpráva</div>
     {foreach $flashes as $flash}
         <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
     {/foreach}

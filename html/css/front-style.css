@@ -1554,3 +1554,9 @@ section#contact-form .form-control:focus {
 .opacity-4 {
 	opacity: 0.4;
 }
+
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+}
