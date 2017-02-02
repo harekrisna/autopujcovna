@@ -1160,6 +1160,10 @@ footer.footer .copyright p.small {
 	margin-left: 25px;
 }
 
+.padd-top-9 {
+	padding-top: 9px !important;
+}
+
 .padd-top-10 {
 	padding-top: 10px;
 }
@@ -1410,6 +1414,8 @@ header .row .btn-big-font {
     height: 46px;
     line-height: 38px;
     font-size: 18px;
+    background-color: white !important;
+    border: 1px solid black;
 }
 
 .picture-shadow {
@@ -1426,12 +1432,13 @@ section.vehicles-list {
   height: 981px;
 }
 
+
+
 .icon-25 {
 	display: block;
 	width: 25px;
 	height: 25px;
 	background-size: 25px 25px;
-	opacity: .7; 
 }
 
 .icon-35 {
@@ -1463,7 +1470,14 @@ section.vehicles-list {
 ..icon-car {
 	background-image: url("../images/front-end/icon/car.png")
 }
+.icon-fa-white {
+	background-image: url("../images/front-end/icon/fa-icon-white.png");
+	transition-duration: 0.35s;
+}
+.icon-fa-white:hover {
+	background-image: url("../images/front-end/icon/fa-icon-blue.png");
 
+}
 
 .list-text {
 	display: block;
@@ -1506,6 +1520,12 @@ section.vehicles-list {
 }
 
 .box-fluid-content {
+	display: table;
+  	margin: auto;
+	height: auto;
+}
+
+.box-fluid-content-first {
 	display: block;
 	width: 95%;
 	height: auto;
@@ -1559,4 +1579,9 @@ section#contact-form .form-control:focus {
    margin-left:auto;
    margin-right:auto;
    display:block;
+}
+
+.btn-default:hover {
+	background-color: #2188a9 !important;
+	color: white;
 }

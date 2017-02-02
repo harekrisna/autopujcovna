@@ -60,7 +60,9 @@
                         <a class="page-scroll" href="#contact-form">KONTAKT</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="https://www.facebook.com/allriskcz/"  target="_blank">f</a>
+						<a href="https://www.facebook.com/allriskcz/" class="padd-top-9" target="_blank"><i class="icon-25 icon-fa-white"></i></a>
+                    	
+
                     </li>
                     <li>
 				        <a class="dropdown-toggle" data-toggle="dropdown">
@@ -83,7 +85,7 @@
             <div class="brand-name">S NAŠÍ AUTOPŮJČOVNOU</div>
             <div class="brand-name-subtext margin-top-25">MŮŽETE PLÁNOVAT SVOJÍ CESTU JIŽ TEĎ</div>
 			<div class="row">
-				<a href="#reservation-form" class="btn btn-color-full margin-top-50 width-300 pull-left page-scroll"><span class="btn-big-font page-scroll">REZERVACE</span></a>
+				<a href="#reservation-form" class="btn btn-color-full btn-primary margin-top-50 width-300 pull-left page-scroll"><span class="btn-big-font page-scroll">REZERVACE</span></a>
 
 			</div>
            <div class="row">
@@ -283,7 +285,7 @@
 										<td><label n:name="brands:$key"><input class="margin-right-10" n:name="brands:$key">{$label}</label></td>
  										{if $iterator->even}</tr><tr>{/if}
 									{/foreach}
-                                    <td><label for="all-brands"><input id="all-brands" name="all-items" class="margin-right-10" type="checkbox" checked="true">nerozoduje</label></td>
+                                    <td><label for="all-brands"><input id="all-brands" name="all-items" class="margin-right-10" type="checkbox" checked="true">nerozhoduje</label></td>
  									</tr>
 								</table>
 							</fieldset>
@@ -364,7 +366,7 @@
 	    	<div class="row">
 				<div class="content-row">
 		    		<div class="col-xs-6 col-sm-3">
-		    			<div class="box-fluid-content">
+		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/company.jpg" alt="company" width="247" height="247" />
 		    				<div class="text-field-about-us">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -373,7 +375,7 @@
 						
 		    		</div>
 		    		<div class="col-xs-6 col-sm-3">
-		    			<div class="box-fluid-content">
+		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/on_call.jpg" alt="on_call" width="247" height="247" />
 		    				<div class="text-field-about-us">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -382,7 +384,7 @@
 
 		    		</div>
 		    		<div class="col-xs-6 col-sm-3 ">
-		    			<div class="box-fluid-content">
+		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/money.jpg" alt="money" width="247" height="247" />
 		    				<div class="text-field-about-us">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -390,7 +392,7 @@
 		    			</div>
 		    		</div>
 		    		<div class="col-xs-6 col-sm-3">
-		    			<div class="box-fluid-content">
+		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/signature.jpeg" alt="signature" width="247" height="247" />
 		    				<div class="text-field-about-us">
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -470,23 +472,23 @@
 	    	<div class="row">
 				<div class="content-row">
 		    		<div class="col-xs-6 col-sm-3 opacity-4 ">
-		    			<div class="box-fluid-content center-block">
+		    			<div class="box-fluid-content">
 		    				<img src="{$basePath}/images/front-end/companys/vw.jpg" alt="company_car_vw" width="140" height="145" />
 						</div>
 						
 		    		</div>
-		    		<div class="col-xs-6 col-sm-3 center-block">
+		    		<div class="col-xs-6 col-sm-3">
 		    			<div class="box-fluid-content padd-top-55 opacity-4 ">
 		    				<img src="{$basePath}/images/front-end/companys/ford.jpg" alt="company_car_ford" width="180" height="70" />
 		    			</div>
 
 		    		</div>
 		    		<div class="col-xs-6 col-sm-3 ">
-		    			<div class="box-fluid-content opacity-4 center-block">
+		    			<div class="box-fluid-content opacity-4 ">
 		    				<img src="{$basePath}/images/front-end/companys/bmw.png" alt="company_car_bmw" width="158" height="158" />
 		    			</div>
 		    		</div>
-		    		<div class="col-xs-6 col-sm-3 padd-top-10 opacity-4 center-block">
+		    		<div class="col-xs-6 col-sm-3 padd-top-10 opacity-4">
 		    			<div class="box-fluid-content">
 		    				<img src="{$basePath}/images/front-end/companys/skoda.jpg" alt="company_car_skoda" width="140" height="140" />
 		    			</div>
@@ -495,17 +497,17 @@
 			</div>
 		</div>
     </section>
-    <footer>
-    	<div class="container">
+    <footer class="bg-dark">
+    	<div class="container ">
     		<div class="row">
     			<div class="col-md-4">
-    				
+    				df
     			</div>
     			<div class="col-md-4">
-    				
+    				fgdg
     			</div>
     			<div class="col-md-4">
-    				
+    				fdgs
     			</div>
     		</div>
     		
