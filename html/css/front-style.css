@@ -1585,3 +1585,11 @@ section#contact-form .form-control:focus {
 	background-color: #2188a9 !important;
 	color: white;
 }
+
+.hover-ef li {
+	background-color: white;
+}
+
+.hover-ef li:hover{
+	background-color: #2188a9 !important;
+}
