@@ -8,7 +8,7 @@
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			<div class="col-md-4">
-				<div class="label label-default btn-price">{$vehicle->price},-/den</div>
+				<div class="label label-default btn-price color-black">{$vehicle->price},-/den</div>
 			</div>
 		</div>
 		<div class="row">
