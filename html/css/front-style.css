@@ -768,18 +768,27 @@ form .row:first-child .floating-label-form-group {
 }
 
 
-.margin-bottom-75 {
-	margin-bottom: 75px !important;
+.margin-bottom-10 {
+	margin-bottom: 10px !important;
 }
-
 .margin-bottom-25 {
 	margin-bottom: 25px;
+}
+.margin-bottom-35 {
+	margin-bottom: 35px;
+}
+.margin-bottom-75 {
+	margin-bottom: 75px !important;
 }
 .margin-left-15 {
 	margin-left: 15px;
 }
 .margin-left-25 {
 	margin-left: 25px;
+}
+
+.padd-bottom-35 {
+	padding-bottom: 35px !important;
 }
 
 .padd-top-9 {
@@ -789,9 +798,7 @@ form .row:first-child .floating-label-form-group {
 .padd-top-10 {
 	padding-top: 10px;
 }
-.padd-bottom-35 {
-	padding-bottom: 35px !important;
-}
+
 .padd-top-20 {
 	padding-top: 20px;
 }
@@ -1177,4 +1184,12 @@ section#contact-form .form-control:focus {
 
 .pure-list {
 	list-style-type: none;
+}
+
+.link-white {
+	color: white;
+}
+
+.link-white:hover {
+	color: #2188a9;
 }

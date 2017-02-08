@@ -53,7 +53,7 @@ class RentalOrderFormFactory extends Nette\Object {
 		$data->addDateTimePicker('take_time', 'Čas odstavení')
 			 ->setRequired('Zadejte čas odstavení prosím.');
 			 
-		$data->addText("note", "Poznámka");
+		$data->addTextArea("note", "Poznámka");
 
 	    $form->addSubmit('add', 'Rezervovat');
 
