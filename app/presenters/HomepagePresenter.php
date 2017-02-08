@@ -10,6 +10,7 @@ use Nette\Mail\Message;
 use Nette\Mail\SendmailMailer;
 use App\Forms\VehiclesFilterFormFactory;
 use App\Forms\RentalOrderFormFactory;
+use App\Forms\ContactFormFactory;
 
 class HomepagePresenter extends BasePresenter {
 
@@ -18,6 +19,9 @@ class HomepagePresenter extends BasePresenter {
 	
 	/** @var RentalOrderFormFactory @inject */
 	public $rentalOrderFormFactory;	
+
+	/** @var ContactFormFactory @inject */
+	public $contactFormFactory;		
 
 	public function renderVehiclesList() {
 		if(empty($_SESSION['filters'])) {
@@ -80,7 +84,7 @@ class HomepagePresenter extends BasePresenter {
 		ini_set('display_startup_errors', 1);
 		error_reporting(E_ALL);
 
-        $to      = 'barta.michal@allrisk.cz';
+        $to      = 'kratochvil.daniel@allrisk.cz';
 		$subject = 'the subject';
 		$message = 'hello';
 		$headers = 'From: careffective@allrisk.cz' . "\r\n" .
@@ -89,14 +93,14 @@ class HomepagePresenter extends BasePresenter {
 
 		mail($to, $subject, $message, $headers);
 
-		$this->sendResponse(new Nette\Application\Responses\TextResponse('$to      = \'barta.michal@allrisk.cz\';<br/>
-		$subject = \'the subject\';<br/>
-		$message = \'hello\';<br/>
-		$headers = \'From: careffective@allrisk.cz\'<br/>
-    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'Reply-To: careffective@allrisk.cz\'<br/>
-    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'X-Mailer: PHP/\' . phpversion();<br/>
-<br/>
-		mail($to, $subject, $message, $headers);'));
+		$this->sendResponse(new Nette\Application\Responses\TextResponse('$to = \'kratochvil.daniel@allrisk.cz\';<br/>
+				$subject = \'the subject\';<br/>
+				$message = \'hello\';<br/>
+				$headers = \'From: careffective@allrisk.cz\'<br/>
+		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'Reply-To: careffective@allrisk.cz\'<br/>
+		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'X-Mailer: PHP/\' . phpversion();<br/>
+		<br/>
+				mail($to, $subject, $message, $headers);'));		
 	}
 
 	protected function createComponentVehiclesFilterForm() {
@@ -149,4 +153,15 @@ class HomepagePresenter extends BasePresenter {
 		
 		return $form;
 	}	
+
+	protected function createComponentContactForm() {
+		$form = $this->contactFormFactory->create();
+
+		$form->onSuccess[] = function ($form, $values) {			
+			$this->flashMessage('Váše zpráva byla odeslána. Děkujeme.', 'success');
+			$this->redirect('vehiclesList');
+		};
+		
+		return $form;
+    }
 }

@@ -44,6 +44,7 @@ class RentalOrderFormFactory extends Nette\Object {
 
 		$data->addText('phone', 'Telefon', 32)
 			 ->setRequired('Zadejte telefon prosím.');
+			 
 		$data->addText('give_place', 'Místo přistavení', 512);
 		$data->addDateTimePicker('give_time', 'Čas přistavení')
 			 ->setRequired('Zadejte čas přistavení prosím.');

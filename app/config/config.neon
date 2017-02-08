@@ -22,6 +22,7 @@ services:
 	- App\Forms\FormFactory
 	- App\Forms\VehiclesFilterFormFactory
 	- App\Forms\RentalOrderFormFactory	
+	- App\Forms\ContactFormFactory
 	- App\AdminModule\Forms\FormFactory
 	- App\AdminModule\Forms\SignFormFactory
 	- App\AdminModule\Forms\VehicleFormFactory

@@ -410,29 +410,29 @@
             <br class="margin-bottom-75">
 			<div class="row">
 			 <div class="col-md-6">
-			 	<form>
+			 	{form contactForm}
 					<div class="form-group">
-						<input type="text" class="form-control" id="" placeholder="Jméno a příjmení">
+						<input n:name="name" n:class="form-control, $form['name']->error ? error" placeholder="{$form['name']->caption}" />
+                        {if $form['name']->error}{label name, class => "error" }{$form['name']->error}{/label}{/if}
 					</div>
 					<div class="form-group">
-						<input type="tel" class="form-control" id="" placeholder="Telefon">
+						<input n:name="phone" n:class="form-control, $form['phone']->error ? error" placeholder="{$form['phone']->caption}" />
+                        {if $form['phone']->error}{label phone, class => "error" }{$form['phone']->error}{/label}{/if}
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" id="" placeholder="Email">
+						<input n:name="email" n:class="form-control, $form['email']->error ? error" placeholder="{$form['email']->caption}" />
+                        {if $form['email']->error}{label email, class => "error" }{$form['email']->error}{/label}{/if}
 					</div>
 					<div class="form-group">
-						<textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-                                placeholder="Zpráva"></textarea>
+						<textarea n:name="message" id="message" class="form-control" rows="9" cols="25" placeholder="{$form['message']->caption}"></textarea>
 					</div>
-						<div class="row">
-							<div class="col-md-6"></div>
-							<div class="col-md-6">
-								<button type="submit" class="btn btn-large btn-block btn-primary"  >Odeslat</button>
-							</div>
+					<div class="row">
+						<div class="col-md-6"></div>
+						<div class="col-md-6">
+							<button type="submit" class="btn btn-large btn-block btn-primary">Odeslat</button>
 						</div>
-					
-
-				</form>
+					</div>
+				{/form}
 			 </div>
 			 <div class="col-md-6">
 			 	<div class="contact-field-text">
@@ -631,12 +631,12 @@
 		    	type: "POST",
 				url: $('#frm-vehiclesFilterForm').attr("action"),
 				data: $('#frm-vehiclesFilterForm').serialize(),
-				success: function(data) {                   
+				success: function(data) {
 					$.nette.success(data);
 					window.history.pushState(data, null, "../");
 				}
-			});	
-		});		
+			});
+		});
 		
 		jQuery.extend(jQuery.validator.messages, {
 			required: "Toto pole je povinné.",
