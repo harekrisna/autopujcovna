@@ -547,23 +547,21 @@
     		
     	</div>
     </footer>
-
     {snippet flashes}
-    	<div class="flash success">Zpráva</div>
-    {foreach $flashes as $flash}
-        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
-    {/foreach}
-    <script>
-        $('.flash').hide().fadeIn(800).delay(2800).fadeOut(800);
+	    {foreach $flashes as $flash}
+	        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+	    {/foreach}
+	    <script>
+	        $('.flash').hide().fadeIn(800).delay(2800).fadeOut(800);
 
-        $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top - 50)
-        }, 1250, 'easeInOutExpo');
-        event.preventDefault();
-    });
-    </script>
+	        $('a.page-scroll').bind('click', function(event) {
+	        var $anchor = $(this);
+	        $('html, body').stop().animate({
+	            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+	        }, 1250, 'easeInOutExpo');
+	        event.preventDefault();
+	    });
+	    </script>
     {/snippet}
 	{block scripts}
     <script src="{$basePath}/framework/bootstrap/js/bootstrap.min.js"></script>
