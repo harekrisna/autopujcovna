@@ -153,6 +153,11 @@ hr.thick {
 	border-top: 4px solid white;
 }
 
+hr.block {
+	display: block;
+	margin: 0 auto !important;
+}
+
 hr.left {
   margin: 15px auto 15px 0;
 }
@@ -397,6 +402,7 @@ header .scroll-down .btn:hover {
   header .brand-name-subtext {
     font-size: 30px;
     line-height: 30px;
+    margin-left: -15px;
   }
   header img {
     max-width: 250px;
@@ -1053,8 +1059,8 @@ section.vehicles-list {
 .icon-person-limit {
 	background-image: url("../images/front-end/icon/multiple-users-silhouette.png")
 }
-..icon-car {
-	background-image: url("../images/front-end/icon/car.png")
+.icon-car {
+	background-image: url("../images/front-end/icon/car.png");
 }
 .icon-fa-white {
 	background-image: url("../images/front-end/icon/fa-icon-white.png");
