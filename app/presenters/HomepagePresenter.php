@@ -95,7 +95,7 @@ class HomepagePresenter extends BasePresenter {
 			$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
 	        
 	        $mail = new Message;
-			$mail->setFrom("Allrisk <careffective@allrisk.cz>")
+			$mail->setFrom("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
 	        	 ->addTo($values['data']['surname']." <".$values['data']['email'].">")
 	             ->setSubject("Potvrzení rezervace")
 				 ->setHtmlBody($template);
@@ -132,7 +132,7 @@ class HomepagePresenter extends BasePresenter {
 			$template = $latte->renderToString('../app/templates/components/contact-email.latte', $params);
 	        
 	        $mail = new Message;
-			$mail->setFrom("Allrisk <careffective@allrisk.cz>")
+			$mail->setFrom("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
 	        	 ->addTo($values['name']." <".$values['email'].">")
 	             ->setSubject("Zpráva z webu careffective")
 				 ->setHtmlBody($template);
