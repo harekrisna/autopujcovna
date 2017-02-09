@@ -19,6 +19,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	protected $rentalOrder;
 	/** @var Photo */
 	protected $photo;
+	/** @var Text */
+	protected $text;
 	/** @var User */
 	protected $user;
 	
@@ -33,6 +35,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         $this->photo = $this->context->getService('photo');
         $this->brand = $this->context->getService('brand');
         $this->rentalOrder = $this->context->getService('rentalOrder');
+        $this->text = $this->context->getService('text');
 		$this->user = $this->getUser();
 
 		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker::register();

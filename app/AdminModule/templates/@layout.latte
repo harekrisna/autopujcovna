@@ -20,7 +20,7 @@
 	{block head}
 	{/block}
 </head>
-<body class="mini-navbar">
+<body>
     <div id="wrapper">
 	    <nav class="navbar-default navbar-static-side" role="navigation">
 	        <div class="sidebar-collapse">
@@ -42,22 +42,28 @@
 	                </li>
 	                <li n:class="$presenter->isLinkCurrent('Vehicle:*') ? active">
 	                    <a n:href="Vehicle:list" title="Vozidla"><i class="fa fa-car"></i><span class="nav-label">Vozidla</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li n:class="$presenter->isLinkCurrent('Vehicle:add') ? active"><a n:href="Vehicle:add">Přidat</a></li>
+                            <li n:class="$presenter->isLinkCurrent('Vehicle:list') ? active"><a n:href="Vehicle:list">Přehled</a></li>
+                        </ul>
 	                </li>
                     <li n:class="$presenter->isLinkCurrent('Brand:*') ? active">
                         <a n:href="Brand:list" title="Značky"><i class="fa fa-diamond"></i><span class="nav-label">Značky</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li n:class="$presenter->isLinkCurrent('Brand:add') ? active"><a n:href="Brand:add">Přidat</a></li>
+                            <li n:class="$presenter->isLinkCurrent('Brand:list') ? active"><a n:href="Brand:list">Přehled</a></li>
+                        </ul>
                     </li>
                     <li n:class="$presenter->isLinkCurrent('RentalOrder:*') ? active">
                         <a n:href="RentalOrder:list" title="Objednávky"><i class="fa fa-handshake-o"></i><span class="nav-label">Objednávky</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li n:class="$presenter->isLinkCurrent('RentalOrder:add') ? active"><a n:href="RentalOrder:add">Přidat</a></li>
+                            <li n:class="$presenter->isLinkCurrent('RentalOrder:list') ? active"><a n:href="RentalOrder:list">Přehled</a></li>
+                        </ul>
                     </li>
-                    {*
-	                <li n:class="$presenter->isLinkCurrent('Person:*') ? active">
-	                    <a n:href="Person:list" title="Osoby"><i class="fa fa-child"></i><span class="nav-label">Osoby</span><span class="fa arrow"></span></a>
-	                    <ul class="nav nav-second-level collapse">
-	                        <li n:class="$presenter->isLinkCurrent('Person:add') ? active"><a n:href="Person:add">Přidat</a></li>
-	                        <li n:class="$presenter->isLinkCurrent('Person:list') ? active"><a n:href="Person:list">Přehled</a></li>
-	                    </ul>
-	                </li>
-                    *}
+                    <li n:class="$presenter->isLinkCurrent('Text:*') ? active">
+                        <a n:href="Text:servicesSection" title="Texty"><i class="fa fa-file-text"></i><span class="nav-label">Texty</span></a>
+                    </li>
 	            </ul>
 	        </div>
 	    </nav>

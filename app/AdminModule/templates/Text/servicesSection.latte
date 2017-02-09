@@ -1,0 +1,79 @@
+{layout 'layout.latte'}
+{block head}
+    <!-- Sweet Alert -->
+    <link href="{$basePath}/css/admin/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+{/block}
+{block content}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    {form form, class => "form-horizontal"}
+                    <div class="container-fluid">
+                        <div class="row text-center">
+                            <div class="col-lg-12 wow fadeIn">
+                                <h1>ZARUČENÁ KVALITA NAŠÍCH SLUŽEB</h1>
+                                <hr class="colored about-us-line thick">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="content-row">
+
+                                <div class="col-xs-6 col-sm-3">
+                                    <div class="box-fluid-content-first">
+                                        <img src="{$basePath}/images/front-end/about/company.jpg" alt="company" width="247" height="247" />
+                                        <div class="text-field-about-us">
+                                            {input services_column_1_text, class => "form-control services-textarea"}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <div class="box-fluid-content-first">
+                                        <img src="{$basePath}/images/front-end/about/on_call.jpg" alt="on_call" width="247" height="247" />
+                                        <div class="text-field-about-us">
+                                            {input services_column_2_text, class => "form-control services-textarea"}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-6 col-sm-3 ">
+                                    <div class="box-fluid-content-first">
+                                        <img src="{$basePath}/images/front-end/about/money.jpg" alt="money" width="247" height="247" />
+                                        <div class="text-field-about-us">
+                                            {input services_column_3_text, class => "form-control services-textarea"}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-3">
+                                    <div class="box-fluid-content-first">
+                                        <img src="{$basePath}/images/front-end/about/signature.jpeg" alt="signature" width="247" height="247" />
+                                        <div class="text-field-about-us">
+                                            {input services_column_4_text, class => "form-control services-textarea"}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="text-align: center;">
+                                    {input save, class => "btn btn-primary big-submit"}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/form}
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
+{block scripts} 
+    <!-- Sweet alert -->
+    <script src="{$basePath}/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+            
+        });
+    </script>
+{/block}

@@ -42,6 +42,14 @@ class HomepagePresenter extends BasePresenter {
 			}
 		}
 		
+	    $texts = $this->text->findAll();
+	    $template_texts = [];
+
+	    foreach ($texts as $text) {
+	    	$template_texts[$text->title] = $text->text;
+	    }
+
+	    $this->template->text = $template_texts;
 		$this->template->vehicles = $vehicles;
 		$this->template->paginator_pages = ceil($vehicles->count()/3);
 		$this->redrawControl('main');
@@ -58,49 +66,6 @@ class HomepagePresenter extends BasePresenter {
 		$order_by == "price" ? $_SESSION['order_by'] = "price DESC" : "";
 		$order_by == "title" ? $_SESSION['order_by'] = "brand_id.title ASC, type ASC" : "";
 		$this->setView("vehiclesList");
-	}
-
-	public function actionSendMail() {
-		/*
-		$latte = new Latte\Engine;		
-		$params = array(
-			'surname' => "TEST",
-			'email' => "TEST@TEST",
-		);
-		
-		$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
-        
-        $mail = new Message;
-		$mail->setFrom("Allrisk <careffective@allrisk.cz>")
-        	 ->addTo("TEST"." <".RESERVATION_CONFIRM_EMAIL.">")
-             ->setSubject("Potvrzení rezervace")
-			 ->setHtmlBody($template);
-             
-        $mailer = new SendmailMailer;
-        $mailer->send($mail);
-        */
-
-        ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
-
-        $to      = 'kratochvil.daniel@allrisk.cz';
-		$subject = 'the subject';
-		$message = 'hello';
-		$headers = 'From: careffective@allrisk.cz' . "\r\n" .
-    			   'Reply-To: careffective@allrisk.cz' . "\r\n" .
-    		       'X-Mailer: PHP/' . phpversion();
-
-		mail($to, $subject, $message, $headers);
-
-		$this->sendResponse(new Nette\Application\Responses\TextResponse('$to = \'kratochvil.daniel@allrisk.cz\';<br/>
-				$subject = \'the subject\';<br/>
-				$message = \'hello\';<br/>
-				$headers = \'From: careffective@allrisk.cz\'<br/>
-		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'Reply-To: careffective@allrisk.cz\'<br/>
-		    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\'X-Mailer: PHP/\' . phpversion();<br/>
-		<br/>
-				mail($to, $subject, $message, $headers);'));		
 	}
 
 	protected function createComponentVehiclesFilterForm() {
@@ -121,25 +86,23 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->rentalOrderFormFactory->create();
 
 		$form->onSuccess[] = function ($form, $values) {
-			try {
-				$latte = new Latte\Engine;		
-				$params = array(
-					'surname' => $values['data']['surname'],
-					'email' => $values['data']['email'],
-				);
-				
-				$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
-		        
-		        $mail = new Message;
-				$mail->setFrom("Allrisk <careffective@allrisk.cz>")
-		        	 ->addTo($values['data']['surname']." <".RESERVATION_CONFIRM_EMAIL.">")
-		             ->setSubject("Potvrzení rezervace")
-					 ->setHtmlBody($template);
-		             
-		        $mailer = new SendmailMailer;
-		        $mailer->send($mail);
-		    } catch(Nette\Mail\SendException $e) {}
-
+			$latte = new Latte\Engine;		
+			$params = array(
+				'surname' => $values['data']['surname'],
+				'email' => $values['data']['email'],
+			);
+			
+			$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
+	        
+	        $mail = new Message;
+			$mail->setFrom("Allrisk <careffective@allrisk.cz>")
+	        	 ->addTo($values['data']['surname']." <".$values['data']['email'].">")
+	             ->setSubject("Potvrzení rezervace")
+				 ->setHtmlBody($template);
+	             
+	        $mailer = new SendmailMailer;
+	        $mailer->send($mail);
+		    
 			$this->flashMessage("Rezervace byla přijata", 'success');
 			
 			if(!$this->isAjax()) {
@@ -158,7 +121,26 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->contactFormFactory->create();
 
 		$form->onSuccess[] = function ($form, $values) {			
-			$this->flashMessage('Váše zpráva byla odeslána. Děkujeme.', 'success');
+			$latte = new Latte\Engine;		
+			$params = array(
+				'name' => $values['name'],
+				'phone' => $values['phone'],
+				'email' => $values['email'],
+				'message' => $values['message'],
+			);
+			
+			$template = $latte->renderToString('../app/templates/components/contact-email.latte', $params);
+	        
+	        $mail = new Message;
+			$mail->setFrom("Allrisk <careffective@allrisk.cz>")
+	        	 ->addTo($values['name']." <".$values['email'].">")
+	             ->setSubject("Zpráva z webu careffective")
+				 ->setHtmlBody($template);
+	             
+	        $mailer = new SendmailMailer;
+	        $mailer->send($mail);
+
+	        $this->flashMessage('Váše zpráva byla odeslána. Děkujeme.', 'success');
 			$this->redirect('vehiclesList');
 		};
 		
