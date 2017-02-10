@@ -28,7 +28,7 @@ section#contact-form {
 }
 .bg-dark {
   color: white;
-  background-color: #222;
+  background-color: #102540;
 }
 @media (max-width: 767px) {
   section {
@@ -178,7 +178,7 @@ hr.colored {
 	border-top: 4px solid white;
 }
 hr.colored {
-  border-color: #2188a9;
+  border-color: #82c3e3;
 }
 
   hr.our-cars-line {
@@ -202,7 +202,7 @@ hr.colored {
   }
 }
 .text-primary {
-  color: #2188a9;
+  color: #82c3e3;
 }
 .navbar-fixed-top {
   margin-bottom: 0;
@@ -213,7 +213,7 @@ hr.colored {
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #2188a9;
+  color: #82c3e3;
   background-color: white;
   border-radius: 0;
 }
@@ -225,7 +225,7 @@ hr.colored {
   border-color: rgba(255, 255, 255, 0.5);
 }
 .navbar-inverse {
-  background-color: #222;
+  background-color: #102540;
 }
 .navbar-default,
 .navbar-inverse {
