@@ -23,4 +23,16 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
    		\RadekDostal\NetteComponents\DateTimePicker\DateTimePicker::register();
 	}
 
+
+	protected function beforeRender() {
+		parent::beforeRender();
+		$texts = $this->text->findAll();
+	    $template_texts = [];
+
+	    foreach ($texts as $text) {
+	    	$template_texts[$text->title] = $text->text;
+	    }
+
+	    $this->template->text = $template_texts;
+	}
 }

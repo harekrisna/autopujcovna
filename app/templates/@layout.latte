@@ -623,9 +623,19 @@
                 }
 			});
 			
-            $("fieldset.filter input[name='all-items']").change(function() {
-                $(this).prop('checked', true);
-                $(this).closest('table').find("input[type='checkbox']").prop('checked', true);
+            $("fieldset.filter input[name='all-items']").change(function(event) {
+            	checked = $(this).closest('table').find("input[type='checkbox']:not(:last):checked").length;
+            	all = $(this).closest('table').find("input[type='checkbox']:not(:last)").length;
+
+            	if(checked == all) {
+            		$(this).prop('checked', false);
+                	$(this).closest('table').find("input[type='checkbox']:not(:first)").prop('checked', false);	
+            	}
+            	else {
+            		$(this).prop('checked', true);
+            		$(this).closest('table').find("input[type='checkbox']").prop('checked', true);
+            	}
+            	event.preventDefault();
             });
 
 			window.addEventListener('popstate', function(e) {

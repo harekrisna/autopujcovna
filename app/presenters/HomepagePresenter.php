@@ -42,14 +42,6 @@ class HomepagePresenter extends BasePresenter {
 			}
 		}
 		
-	    $texts = $this->text->findAll();
-	    $template_texts = [];
-
-	    foreach ($texts as $text) {
-	    	$template_texts[$text->title] = $text->text;
-	    }
-
-	    $this->template->text = $template_texts;
 		$this->template->vehicles = $vehicles;
 		$this->template->paginator_pages = ceil($vehicles->count()/3);
 		$this->redrawControl('main');
@@ -59,6 +51,15 @@ class HomepagePresenter extends BasePresenter {
 		$this->template->vehicle = $this->vehicle->get($vehicle_id);
 		$this['rentalOrderForm']['data']['vehicle_id']->setValue($vehicle_id);
 		$this['rentalOrderForm']->setDefaults([]);
+		/*$this->template->values = array("name" => "Michal",
+										"surname" => "Bárta",
+										"email" => "barta.michal@allrisk.cz",
+										"phone" => "+420 728 748 246",
+										"give_place" => "Brno",
+										"give_time" => "08.06.2017",
+										"take_place" => "Praha",
+										"take_time" => "09.06.2017",
+										"note" => "něco něco blabla");*/
 		$this->redrawControl('main');
 	}
 
@@ -101,10 +102,12 @@ class HomepagePresenter extends BasePresenter {
 				 ->setHtmlBody($template);
 	             
 	        $mailer = new SendmailMailer;
-	        $mailer->send($mail);
+	        //$mailer->send($mail);
 		    
 			$this->flashMessage("Rezervace byla přijata", 'success');
-			
+			$this->template->success = true;
+			$this->template->values = $values->data;
+
 			if(!$this->isAjax()) {
 				$this->redirect($this->getAction(), $this->getParameter('vehicle_id'));
 			}

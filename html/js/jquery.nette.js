@@ -61,14 +61,18 @@ jQuery.ajaxSetup({
 });
 
 $('body').on('submit', 'form.ajax', function( event ) {
-	var action = $(this).attr("action");
+	var form = $(this);
+	var action = form.attr("action");
+
 	$.ajax({
 	    type: "POST",
 	    url: action,
 	    data: $(this).serialize(),
 	    success: function(data) {                   
 			$.nette.success(data);
-			window.history.pushState(data, null, action);
+			if(!form.hasClass("no-push-history")) {
+				window.history.pushState(data, null, action);
+			}
 	    }
 	});
 	event.preventDefault();

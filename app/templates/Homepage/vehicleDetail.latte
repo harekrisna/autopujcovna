@@ -24,7 +24,26 @@
 				</ul>
 			</div>
 		</div>
-		{form rentalOrderForm, class => "form-horizontal ajax"}
+        {if isset($success) && $success == true}
+            <h3>Rezervace byla přijata</h3>
+            <table>
+            <tr><th>Jméno:</th><td>{$values->name}</td></tr>
+            <tr><th>Příjmení:</th><td>{$values['surname']}</td></tr>
+            <tr><th>Email:</th><td>{$values['email']}</td></tr>
+            <tr><th>Telefon:</th><td>{$values['phone']}</td></tr>
+            <tr n:if="$values['give_place'] != ''"><th>Místo přistavení:</th><td>{$values['give_place']}</td></tr>
+            <tr><th>Čas přistavení:</th><td>{$values['give_time']|date: 'j.n.Y H:i'}</td></tr>
+            <tr n:if="$values['take_place'] != ''"><th>Místo odstavení:</th><td>{$values['take_place']}</td></tr>
+            <tr><th>Čas odstavení:</th><td>{$values['take_time']|date: 'j.n.Y H:i'}</td></tr>
+            <tr n:if="$values['note'] != ''"><th>Poznámka:</th><td>{$values['note']}</td></tr>
+            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <a id="back_to_list" class="btn btn-block btn-default">ZPĚT NA VÝPIS</a>
+                </div>
+            </div>
+        {else}
+		{form rentalOrderForm, class => "form-horizontal ajax no-push-history"}
 	    <div class="row margin-bottom-35">
 	        <div class="col-lg-12">
 	            <div class="ibox float-e-margins">
@@ -85,7 +104,6 @@
 	            </div>
 	        </div>
 	    </div>
-
 		<div class="row">
 			<div class="col-md-6">
 				<a id="back_to_list" class="btn btn-block btn-default">ZPĚT NA VÝPIS</a>
@@ -123,7 +141,15 @@
             autoclose: true,
             language: 'cs',
         });
+
+        $('input[name=data\\[name\\]]').val("Michal");
+        $('input[name=data\\[surname\\]]').val("Bárta");
+        $('input[name=data\\[email\\]]').val("barta.michal@allrisk.cz");
+        $('input[name=data\\[phone\\]]').val("+420 728 748 246");
+        $('input[name=data\\[give_time\\]\\[date\\]').val("08.03.2017");
+        $('input[name=data\\[take_time\\]\\[date\\]').val("09.03.2017");
 	});
 </script>
+{/if}
 {/snippet}
 {/block}
