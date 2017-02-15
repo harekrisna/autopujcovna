@@ -4,16 +4,20 @@
 	<div class="col-md-12 well well-sm">
 		<div class="row">	
 			<div class="col-md-12">
-				<h4 class="text-pull-left">{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</h4>
-                <hr class="colored reservation-line margin-0">
+				<h4>{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</h4>
+                <hr class="colored reservation-line thick margin-0">
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 margin-top-25">
+                <div class="box-fluid-content">
+                    
+               
 				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow" width="504" height="263">
-			</div>
+			 </div>
+            </div>
 			
 		</div>
         <div class="row">
@@ -32,7 +36,11 @@
             </div>
         </div>
         {if !isset($success)}
+            <div class="margin-top-43">
+                
+            
             <h3>Rezervace byla přijata</h3>
+            </div>
             <table class="reserv-end-table">
             <tr><th>Jméno:</th><td>{$values['name']}</td></tr>
             <tr><th>Příjmení:</th><td>{$values['surname']}</td></tr>
