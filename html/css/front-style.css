@@ -275,7 +275,7 @@ hr.colored {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:hover {
-  color: #2188a9;
+  color: #82c3e3;
 }
 @media (min-width: 768px) {
   .navbar-default .navbar-nav > .active > a,
@@ -398,6 +398,7 @@ header .scroll-down .btn:hover {
   header .brand-name {
     font-size: 80px;
     line-height: 80px;
+    margin-left: -15px;
   }
   header .brand-name-subtext {
     font-size: 30px;
@@ -1185,7 +1186,7 @@ section#contact-form .form-control:focus {
 }
 
 .hover-ef li:hover{
-	background-color: #2188a9 !important;
+	background-color: #82c3e3 !important;
 }
 
 .pure-list {
@@ -1197,5 +1198,5 @@ section#contact-form .form-control:focus {
 }
 
 .link-white:hover {
-	color: #2188a9;
+	color: #82c3e3;
 }
