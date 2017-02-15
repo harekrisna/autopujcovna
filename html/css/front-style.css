@@ -1200,3 +1200,24 @@ section#contact-form .form-control:focus {
 .link-white:hover {
 	color: #82c3e3;
 }
+
+.reserv-end-table {
+	margin: 25px 0 40px 0;
+}
+
+.reserv-end-table th {
+	height: 45px;
+	width: 235px;
+	padding-left: 5px;
+}
+
+.reserv-end-table td {
+	text-align: left;
+
+	width: 250px;
+}
+
+.reserv-end-table tr {
+	border-bottom: 1px solid #82c3e3;
+	vertical-align: bottom;
+}

@@ -3,31 +3,38 @@
 <div class="row">
 	<div class="col-md-12 well well-sm">
 		<div class="row">	
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<h4 class="text-pull-left">{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</h4>
+                <hr class="colored reservation-line margin-0">
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
-			<div class="col-md-4">
-				<div class="label label-default btn-price color-black">{$vehicle->price},-/den</div>
-			</div>
+			
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow" width="304" height="263">
+			<div class="col-md-12">
+				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow" width="504" height="263">
 			</div>
-			<div class="col-md-6">
-				<ul class="list-unstyled">
-					<li class=""><i></i></li>
-					<li class=""></li>
-					<li class=""></li>
-					<li class=""></li>
-				</ul>
-			</div>
+			
 		</div>
-        {if isset($success) && $success == true}
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li class=""><i></i></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                    <li class=""></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="label label-default btn-price color-black">{$vehicle->price},-/den</div>
+            </div>
+        </div>
+        {if !isset($success)}
             <h3>Rezervace byla přijata</h3>
-            <table>
-            <tr><th>Jméno:</th><td>{$values->name}</td></tr>
+            <table class="reserv-end-table">
+            <tr><th>Jméno:</th><td>{$values['name']}</td></tr>
             <tr><th>Příjmení:</th><td>{$values['surname']}</td></tr>
             <tr><th>Email:</th><td>{$values['email']}</td></tr>
             <tr><th>Telefon:</th><td>{$values['phone']}</td></tr>
@@ -38,7 +45,7 @@
             <tr n:if="$values['note'] != ''"><th>Poznámka:</th><td>{$values['note']}</td></tr>
             </table>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <a id="back_to_list" class="btn btn-block btn-default">ZPĚT NA VÝPIS</a>
                 </div>
             </div>
