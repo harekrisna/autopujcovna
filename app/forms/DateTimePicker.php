@@ -22,7 +22,7 @@ class DateTimePicker extends \Nette\Forms\Controls\BaseControl {
         if($value) {
             $datetime = DateTime::from($value);
             $this->date = $datetime->format("d.m.Y");
-            $this->time = $datetime->format("h:i:00");
+            $this->time = $datetime->format("H:i:00");
         }
         else {
             $this->date = $this->time = NULL;

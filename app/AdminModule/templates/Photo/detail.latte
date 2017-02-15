@@ -15,7 +15,7 @@
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
                 <span class="pull-right">
-                    {$vehicle->id}_{$vehicle->rz}
+                    {$vehicle->photos_folder}
                 </span>
                 <span class="label label-success"><span class="glyphicon glyphicon-folder-open"></span></span> Adresář galerie:
             </li>
@@ -72,7 +72,6 @@
 </div>
 {/block}
 {block scripts}
-  <script type="text/javascript" src="{$basePath}/js/nette.ajax.js"></script>
   <script type="text/javascript" src="{$basePath}/js/jquery-ui.min.js"></script>
   <script type="text/javascript" src="{$basePath}/js/jquery.uploadifive.min.js"></script>
   <script type="text/javascript">

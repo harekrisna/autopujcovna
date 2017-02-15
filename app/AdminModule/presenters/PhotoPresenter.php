@@ -38,8 +38,8 @@ final class PhotoPresenter extends BasePresenter {
 		$vehicle = $this->vehicle
 		   		        ->get($vehicle_id);
 		
-		$this->template->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in("./images/photos/{$vehicle->id}_{$vehicle->rz}/photos")->count();
-		$this->template->vehicle_photos_folder = $this->photos_dir."/".$vehicle->id."_".$vehicle->rz;
+		$this->template->images_dir_count = Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in("./images/photos/{$vehicle->photos_folder}/photos")->count();
+		$this->template->vehicle_photos_folder = $this->photos_dir."/".$vehicle->photos_folder;
 		
 		$this->template->photos = $this->photo
 									   ->findAll()
@@ -63,7 +63,7 @@ final class PhotoPresenter extends BasePresenter {
 				$tempFile   = $_FILES['Filedata']['tmp_name'];
 				$uploadDir  = $this->photos_dir."/photos";
 				$targetFile = Strings::webalize($fileParts['filename']).".".$fileParts['extension'];
-				$vehicle_photos_folder = $this->photos_dir."/".$vehicle->id."_".$vehicle->rz;
+				$vehicle_photos_folder = $this->photos_dir."/".$vehicle->photos_folder;
 				
 				$image = Image::fromFile($tempFile);
 				$image->resize(NULL, 1200, Image::SHRINK_ONLY);
@@ -130,7 +130,7 @@ final class PhotoPresenter extends BasePresenter {
 
 	function handleRemovePhoto($photo_id) {
 		$photo = $this->photo->get($photo_id);
-		$dir = $this->photos_dir."/".$photo->vehicle->id."_".$photo->vehicle->rz;
+		$dir = $this->photos_dir."/".$photo->vehicle->photos_folder;
 		
 		@unlink($dir."/photos/".$photo->file);
 		@unlink($dir."/previews/".$photo->file);
@@ -153,7 +153,7 @@ final class PhotoPresenter extends BasePresenter {
 
 	function actionGeneratePhotos($vehicle_id) {
 		$vehicle = $this->vehicle->get($vehicle_id);
-		$photos_dir = $this->photos_dir."/".$vehicle->id."_".$vehicle->rz;
+		$photos_dir = $this->photos_dir."/".$vehicle->photos_folder;
 		$vehicle->related("photo", "vehicle_id")->delete();
 
 		foreach (Finder::findFiles('*.jpg', '*.jpeg', '*.png', '*.gif')->in($photos_dir."/previews") as $file_path => $file) {
@@ -205,8 +205,6 @@ final class PhotoPresenter extends BasePresenter {
 				
 		$this->redirect("detail", $vehicle_id);
 	}	
-	
-	
 	
 	function handleUpdateDescription($photo_id, $text) {
     	$this->photo->update($photo_id, ["description" => $text]);
