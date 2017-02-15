@@ -43,6 +43,19 @@ input.form-control:focus {
   border-color: #2188a9;
   box-shadow: none;
 }
+
+label.error {
+  font-size: 17px;
+  margin-bottom: 0px;
+}
+
+.date label.error {
+  position: absolute;
+  left: 345px;
+  width: 300px;
+  top: 5px;
+}
+
 .btn,
 .input-group-btn {
   -webkit-transition: all 0.5s;
