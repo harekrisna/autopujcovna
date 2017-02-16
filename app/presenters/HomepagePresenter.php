@@ -46,12 +46,12 @@ class HomepagePresenter extends BasePresenter {
 		$this->template->paginator_pages = ceil($vehicles->count()/3);
 		$this->redrawControl('main');
 	}
-	
+
 	public function renderVehicleDetail($vehicle_id) {
 		$this->template->vehicle = $this->vehicle->get($vehicle_id);
 		$this['rentalOrderForm']['data']['vehicle_id']->setValue($vehicle_id);
 		$this['rentalOrderForm']->setDefaults([]);
-		$this->template->values = array("name" => "Michal",
+		/*$this->template->values = array("name" => "Michal",
 										"surname" => "Bárta",
 										"email" => "barta.michal@allrisk.cz",
 										"phone" => "+420 728 748 246",
@@ -59,7 +59,7 @@ class HomepagePresenter extends BasePresenter {
 										"give_time" => "08.06.2017",
 										"take_place" => "Praha",
 										"take_time" => "09.06.2017",
-										"note" => "něco něco blabla");
+										"note" => "něco něco blabla");*/
 		$this->redrawControl('main');
 	}
 
@@ -102,7 +102,9 @@ class HomepagePresenter extends BasePresenter {
 				 ->setHtmlBody($template);
 	             
 	        $mailer = new SendmailMailer;
-	        //$mailer->send($mail);
+	        $mailer->send($mail);
+	        $phone = str_replace(' ', '', $values['data']['phone']);
+	        mail("<sms:".$phone."@allrisk.cz>", '', "Vaše rezervace byla přijata, budeme Vás telefonicky či emailem kontaktovat. Váš Allrisk.");
 		    
 			$this->flashMessage("Rezervace byla přijata", 'success');
 			$this->template->success = true;
@@ -123,26 +125,7 @@ class HomepagePresenter extends BasePresenter {
 	protected function createComponentContactForm() {
 		$form = $this->contactFormFactory->create();
 
-		$form->onSuccess[] = function ($form, $values) {			
-			$latte = new Latte\Engine;		
-			$params = array(
-				'name' => $values['name'],
-				'phone' => $values['phone'],
-				'email' => $values['email'],
-				'message' => $values['message'],
-			);
-			
-			$template = $latte->renderToString('../app/templates/components/contact-email.latte', $params);
-	        
-	        $mail = new Message;
-			$mail->setFrom("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
-	        	 ->addTo($values['name']." <".$values['email'].">")
-	             ->setSubject("Zpráva z webu careffective")
-				 ->setHtmlBody($template);
-	             
-	        $mailer = new SendmailMailer;
-	        $mailer->send($mail);
-
+		$form->onSuccess[] = function ($form, $values) {
 	        $this->flashMessage('Váše zpráva byla odeslána. Děkujeme.', 'success');
 			$this->redirect('vehiclesList');
 		};

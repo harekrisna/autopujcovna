@@ -42,19 +42,20 @@ class ContactFormFactory extends Nette\Object {
 	}
 
 	public function formSucceeded(Form $form, $values) {
-		$latte = new Latte\Engine;
-		$params = ['name' => $values['name'],
-				   'phone' => $values['phone'],
-				   'email' => $values['email'],
-				   'message' => $values['message']
-				  ];
-		
-        $mail = new Message;
-        $mail->setFrom($values['name']." <".$values['email'].">")
-             ->addTo("Car Effective <careffective@allrisk.cz>")
-             ->setSubject("Zpráva z webu Car Effective")
-			 ->setHtmlBody($latte->renderToString('../app/templates/components/contact-email.latte', $params));
+		$latte = new Latte\Engine;		
+		$params = [
+			'name' => $values['name'],
+			'phone' => $values['phone'],
+			'email' => $values['email'],
+			'message' => $values['message'],
+		];
         
+        $mail = new Message;
+		$mail->setFrom("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
+        	 ->addTo($values['name']." <".$values['email'].">")
+             ->setSubject("Zpráva z webu careffective")
+			 ->setHtmlBody($latte->renderToString('../app/templates/components/contact-email.latte', $params));
+             
         $mailer = new SendmailMailer;
         $mailer->send($mail);
 	}
