@@ -17,7 +17,7 @@ section#about-us {
 section#reservation-form {
   padding: 100px 0;
 }
-section#facility {
+section#our-branch {
   padding: 100px 0;
 }
 section#contact-form {
@@ -204,8 +204,8 @@ hr.colored {
   hr.about-us-line {
     max-width: 1080px !important;
   }
-  hr.facility-line {
-    max-width: 1220px !important;
+  hr.our-branch-line {
+    max-width: 610px !important;
   }
   hr.left {
     margin: 20px auto 20px 0;
