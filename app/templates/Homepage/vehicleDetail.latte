@@ -10,7 +10,7 @@
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 		</div>
 		<div class="row">
-			<div class="col-md-12 margin-top-25">
+			<div class="col-md-12 margin-top-25 fix-height-368">
                 <div class="box-fluid-content">
 				<img src="{$basePath}/images/photos/{$vehicle->photos_folder}/previews/{$picture ? $picture->file}" alt="" class="img-responsive pull-left margin-bottom-25 picture-shadow" width="504" height="263">
 			 </div>
@@ -31,7 +31,7 @@
                 <div class="label label-default btn-price-2 btn-block color-black">{$vehicle->price},-/den</div>
             </div>
         </div>
-        {if !isset($success)}
+        {if isset($success) && $success == true}
             <div class="margin-top-20">
                 <h3>Rezervace byla přijata</h3>
                 <p>

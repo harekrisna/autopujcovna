@@ -824,6 +824,9 @@ form .row:first-child .floating-label-form-group {
 .padd-top-20 {
 	padding-top: 20px;
 }
+.padd-top-40 {
+  padding-top: 40px;
+}
 .padd-top-55 {
 	padding-top: 55px;
 }
@@ -1247,3 +1250,6 @@ section#contact-form .form-control:focus {
 	vertical-align: bottom;
 }
 
+.fix-height-368 {
+  height: 368px;
+}
