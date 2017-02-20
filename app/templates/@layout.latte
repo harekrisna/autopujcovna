@@ -473,27 +473,28 @@
         <div class="container">
 	    	<div class="row">
 				<div class="content-row">
-		    		<div class="col-xs-6 col-sm-3 opacity-4 ">
-		    			<div class="box-fluid-content">
-		    				<img src="{$basePath}/images/front-end/companys/vw.jpg" alt="company_car_vw" width="140" height="145" />
-						</div>
+		    		<div class="col-md-4">
+		    			<p>PRAHA</p>
+		    			<p>BRNO</p>
+		    			<p>OLOMOUC</p>
+		    			<p>OSTRAVA</p>
 						
 		    		</div>
-		    		<div class="col-xs-6 col-sm-3">
-		    			<div class="box-fluid-content padd-top-55 opacity-4 ">
-		    				<img src="{$basePath}/images/front-end/companys/ford.jpg" alt="company_car_ford" width="180" height="70" />
+		    		<div class="col-md-8">
+		    			<div class="map-layout">
+		    				<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDSVg3fytlIabOmTs9OYCleglSv9et6HfI'></script>
+		    				<div style='overflow:hidden;height:422px;width:710px;'>
+		    				<div id='gmap_canvas' style='height:422px;width:710px;'></div>
+
+		    				<style>#gmap_canvas img{ max-width:none!important;background:none!important}
+		    				</style>
+		    				</div> 
+		    				<a href='http://www.maps-iframe.com/'>www.Maps-Iframe</a> 
+		    				<script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=fe05c15ff3626fa9d4de82da1bd894d3214e5d12'>
+		    				</script>
+		    				<script type='text/javascript'>function init_map(){ var myOptions = { zoom:16,center:new google.maps.LatLng(49.1802801,16.61905630000001),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({ map: map,position: new google.maps.LatLng(49.1802801,16.61905630000001)});infowindow = new google.maps.InfoWindow({ content:'<strong>Allrisk Komárovska</strong><br>Komárovksá 20a<br>61700 Brno<br>'});google.maps.event.addListener(marker, 'click', function(){ infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
 		    			</div>
 
-		    		</div>
-		    		<div class="col-xs-6 col-sm-3 ">
-		    			<div class="box-fluid-content opacity-4 ">
-		    				<img src="{$basePath}/images/front-end/companys/bmw.png" alt="company_car_bmw" width="158" height="158" />
-		    			</div>
-		    		</div>
-		    		<div class="col-xs-6 col-sm-3 padd-top-10 opacity-4">
-		    			<div class="box-fluid-content">
-		    				<img src="{$basePath}/images/front-end/companys/skoda.jpg" alt="company_car_skoda" width="140" height="140" />
-		    			</div>
 		    		</div>
 				</div>
 			</div>
