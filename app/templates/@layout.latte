@@ -474,25 +474,119 @@
 	    	<div class="row">
 				<div class="content-row">
 		    		<div class="col-md-4">
-		    			<p>PRAHA</p>
-		    			<p>BRNO</p>
-		    			<p>OLOMOUC</p>
-		    			<p>OSTRAVA</p>
-						
+						<div class="city-address">
+								
+							<div class="specific-address">
+								
+							
+				    			<a href="javascript:;" class="address-city" title="">PRAHA</a>
+				    			<div class="address-detail" style="display: block">
+				    				<ul class="pure-list margin-top-10">	
+				    					<li>Centrála společnosti Allrisk</li>
+				    					<li>Allrisk, a.s.</li>
+				    					<li>Komárovská 263/20A</li>
+				    					<li>Brno - Komárov, 617 00</li>
+				    					<li> &nbsp;</li>
+				    					<li>tel.: +420 545 110 341</li>
+				    					<li>e-mail: allrisk@allrisk.cz</li>
+				    				</ul>
+				    			</div>
+							</div>
+
+<div class="specific-address">
+		    		<a href="javascript:;" class="address-city" title="">BRNO</a>
+		    			<div class="address-detail">
+		    				<ul class="pure-list margin-top-10">	
+		    					<li>Centrála společnosti Allrisk</li>
+		    					<li>Allrisk, a.s.</li>
+		    					<li>Komárovská 263/20A</li>
+		    					<li>Brno - Komárov, 617 00</li>
+		    					<li> &nbsp;</li>
+		    					<li>tel.: +420 545 110 341</li>
+		    					<li>e-mail: allrisk@allrisk.cz</li>
+		    				</ul>
+		    			</div>
+</div>
+		    			<div class="specific-address">
+		    			<a href="javascript:;" class="address-city" title="">OLOMOUC</a>
+		    			<div class="address-detail">
+		    				<ul class="pure-list margin-top-10">	
+		    					<li>Centrála společnosti Allrisk</li>
+		    					<li>Allrisk, a.s.</li>
+		    					<li>Komárovská 263/20A</li>
+		    					<li>Brno - Komárov, 617 00</li>
+		    					<li> &nbsp;</li>
+		    					<li>tel.: +420 545 110 341</li>
+		    					<li>e-mail: allrisk@allrisk.cz</li>
+		    				</ul>
+		    			</div>
+		    			</div>
+		    			<div class="specific-address">
+		    			<a href="javascript:;" class="address-city" title="">OSTRAVA</a>
+		    			<div class="address-detail">
+		    				<ul class="pure-list margin-top-10">	
+		    					<li>Centrála společnosti Allrisk</li>
+		    					<li>Allrisk, a.s.</li>
+		    					<li>Komárovská 263/20A</li>
+		    					<li>Brno - Komárov, 617 00</li>
+		    					<li> &nbsp;</li>
+		    					<li>tel.: +420 545 110 341</li>
+		    					<li>e-mail: allrisk@allrisk.cz</li>
+		    				</ul>
+		    			</div>
+		    			</div>
+
+						<script type='text/javascript'>
+							 $(document).ready(function() {
+	
+	var faqTab = $('.address-city'),
+        faqTabContainer = $('.city-address');
+	
+	if(faqTab.length){
+	
+		faqTab.off('click').on('click', function(){
+			var faqRow = $(this).parent(),
+			    faqContent = $(this).parent().find('.address-detail');
+            
+			    faqTabContainer.find('.address-detail').not(faqContent).stop().slideUp('slow');
+                faqTabContainer.find('.specific-address').not(faqRow).removeClass('open');
+                
+			    faqContent.stop().slideToggle('slow', function() {
+					faqRow.toggleClass('open', faqContent.is(':visible'));
+				});
+		});
+		
+	}
+	
+});
+
+						</script>
+
+					</div>
 		    		</div>
 		    		<div class="col-md-8">
 		    			<div class="map-layout">
 		    				<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDSVg3fytlIabOmTs9OYCleglSv9et6HfI'></script>
-		    				<div style='overflow:hidden;height:422px;width:710px;'>
-		    				<div id='gmap_canvas' style='height:422px;width:710px;'></div>
-
-		    				<style>#gmap_canvas img{ max-width:none!important;background:none!important}
-		    				</style>
+		    				<div style='overflow:hidden;height:350px;width:640px;'>
+		    				<div id='gmap_canvas' style='height:350px;width:640px;'>
+		    					
+		    				</div>
+			    				<style>#gmap_canvas img{ max-width:none!important;background:none!important}
+			    				</style>
 		    				</div> 
 		    				<a href='http://www.maps-iframe.com/'>www.Maps-Iframe</a> 
 		    				<script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=fe05c15ff3626fa9d4de82da1bd894d3214e5d12'>
 		    				</script>
-		    				<script type='text/javascript'>function init_map(){ var myOptions = { zoom:16,center:new google.maps.LatLng(49.1802801,16.61905630000001),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({ map: map,position: new google.maps.LatLng(49.1802801,16.61905630000001)});infowindow = new google.maps.InfoWindow({ content:'<strong>Allrisk Komárovska</strong><br>Komárovksá 20a<br>61700 Brno<br>'});google.maps.event.addListener(marker, 'click', function(){ infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+		    				<script type='text/javascript'>
+		    				function init_map()
+		    					{ var myOptions = { 
+		    						zoom:16,
+		    						center:new google.maps.LatLng(49.1802801,16.61905630000001),
+		    						mapTypeId: google.maps.MapTypeId.ROADMAP};
+		    						map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+		    						marker = new google.maps.Marker({ map: map,position: new google.maps.LatLng(49.1802801,16.61905630000001)});
+		    						infowindow = new google.maps.InfoWindow({ content:'<strong>Allrisk Komárovska</strong><br>Komárovksá 20a<br>61700 Brno<br>'});google.maps.event.addListener(marker, 'click', function(){ infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
+		    				</script>
 		    			</div>
 
 		    		</div>

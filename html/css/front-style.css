@@ -1253,3 +1253,11 @@ section#contact-form .form-control:focus {
 .fix-height-368 {
   height: 368px;
 }
+
+.address-city {
+  display: block;
+}
+
+.address-detail {
+  display: none;
+}
