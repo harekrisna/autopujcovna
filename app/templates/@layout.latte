@@ -11,7 +11,7 @@
     <meta name="author" content="">
 	<title n:snippet="title">{ifset title}{include title|striptags} | {/ifset}Car Effective</title>
 	<script src="{$basePath}/framework/jquery/jquery.min.js"></script>
-
+	<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDSVg3fytlIabOmTs9OYCleglSv9et6HfI'></script>
 	<!-- Jquery paging -->
     <script src="{$basePath}/js/plugins/jquery-paging/jquery.twbsPagination.min.js"></script>
 
@@ -414,9 +414,7 @@
 						<div class="city-address">
 								
 							<div class="specific-address">
-								
-							
-				    			<a href="javascript:;" class="address-city" title="">PRAHA</a>
+				    			<a class="location" data-location="51.555774,-1.779718">BRNO</a>
 				    			<div class="address-detail" style="display: block">
 				    				<ul class="pure-list margin-top-10">	
 				    					<li>Centrála společnosti Allrisk</li>
@@ -431,7 +429,7 @@
 							</div>
 
 <div class="specific-address">
-		    		<a href="javascript:;" class="address-city" title="">BRNO</a>
+		    		<a class="location" data-location="50.090244,14.399568">PRAHA</a>
 		    			<div class="address-detail">
 		    				<ul class="pure-list margin-top-10">	
 		    					<li>Centrála společnosti Allrisk</li>
@@ -445,7 +443,7 @@
 		    			</div>
 </div>
 		    			<div class="specific-address">
-		    			<a href="javascript:;" class="address-city" title="">OLOMOUC</a>
+		    			  <a class="location" data-location="51.454265,-0.97813">OLOMOUC</a>
 		    			<div class="address-detail">
 		    				<ul class="pure-list margin-top-10">	
 		    					<li>Centrála společnosti Allrisk</li>
@@ -459,7 +457,7 @@
 		    			</div>
 		    			</div>
 		    			<div class="specific-address">
-		    			<a href="javascript:;" class="address-city" title="">OSTRAVA</a>
+		    			<a class="location" data-location="52.240477,-0.902656">OSTRAVA</a>
 		    			<div class="address-detail">
 		    				<ul class="pure-list margin-top-10">	
 		    					<li>Centrála společnosti Allrisk</li>
@@ -474,59 +472,166 @@
 		    			</div>
 
 						<script type='text/javascript'>
-							 $(document).ready(function() {
-	
-	var faqTab = $('.address-city'),
-        faqTabContainer = $('.city-address');
-	
-	if(faqTab.length){
-	
-		faqTab.off('click').on('click', function(){
-			var faqRow = $(this).parent(),
-			    faqContent = $(this).parent().find('.address-detail');
-            
-			    faqTabContainer.find('.address-detail').not(faqContent).stop().slideUp('slow');
-                faqTabContainer.find('.specific-address').not(faqRow).removeClass('open');
-                
-			    faqContent.stop().slideToggle('slow', function() {
-					faqRow.toggleClass('open', faqContent.is(':visible'));
-				});
-		});
-		
-	}
-	
-});
 
+							var map, marker;
+
+							function initialize() {
+							    var mapOptions = {
+							        center: new google.maps.LatLng(49.180282,  16.619077),
+							        zoom: 17,
+							        draggable: true,
+							        /* scrollwheel: false,
+							        disableDoubleClickZoom: true,
+							        zoomControl: false */
+							    };
+							    map = new google.maps.Map(document.getElementById("map-container"),
+							    mapOptions);
+
+							    var styles = [{
+							        featureType: "landscape.man_made",
+							        elementType: "geometry",
+							        stylers: [{
+							            visibility: "on"
+							        }, {
+							            color: "#d4ebf4"
+							        }]
+							    }, {
+							        featureType: "road",
+							        elementType: "labels.text.fill",
+							        stylers: [{
+							            visibility: "on"
+							        }, {
+							            color: "#202020"
+							        }]
+							    }, {
+							        featureType: "poi.business",
+							        elementType: "all",
+							        stylers: [{
+							            visibility: "on"
+							        }]
+							    }, {
+							        featureType: "poi.park",
+							        elementType: "all",
+							        stylers: [{
+							            color: "#98d1e8"
+							        }]
+							    }, {
+							        featureType: "poi.school",
+							        elementType: "all",
+							        stylers: [{
+							            visibility: "off"
+							        }, {
+							            color: "#808080"
+							        }]
+							    }, {
+							        featureType: "all",
+							        elementType: "geometry.stroke",
+							        stylers: [{
+							            visibility: "off"
+							        }]
+							    }, {
+							        featureType: "poi.park",
+							        elementType: "labels.text.fill",
+							        stylers: [{
+							            visibility: "off"
+							        }]
+							    }, {
+							        featureType: "transit.station.rail",
+							        elementType: "labels.icon",
+							        stylers: [{
+							            hue: "#005eff"
+							        }, {
+							            saturation: -37
+							        }]
+							    }, {
+							        featureType: "poi.park",
+							        elementType: "labels.text.stroke",
+							        stylers: [{
+							            color: "#808080"
+							        }]
+							    }, {
+							        featureType: "road.local",
+							        elementType: "all",
+							        stylers: [{
+							            color: "#ffffff"
+							        }]
+							    }, {
+							        featureType: "all",
+							        elementType: "labels.text.fill",
+							        stylers: [{
+							            color: "#808080"
+							        }]
+							    }, {
+							        featureType: "transit.line",
+							        elementType: "all",
+							        stylers: [{
+							            color: "#ffffff"
+							        }]
+							    }];
+
+							    map.setOptions({
+							        styles: styles
+							    });
+
+
+							    var blueIco = {
+							        url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
+							        size: new google.maps.Size(55, 73),
+							        anchor: new google.maps.Point(16, 34)
+							    };
+
+							    var latLng = new google.maps.LatLng(49.180282,  16.619077);
+
+							    marker = new google.maps.Marker({
+							        map: map,
+							        position: latLng,
+							        animation: google.maps.Animation.DROP,
+							        icon: blueIco,
+							        normalIcon: blueIco
+							    });
+
+							    google.maps.event.addListener(marker, "mouseout", function (event) {
+							        this.setIcon(this.normalIcon);
+							        infowindow.close();
+							    });
+							    $('.location').on('click', function () {
+							        var latlonStr = $(this).data('location')
+							        var coords = latlonStr.split(",");
+							        var latLng = new google.maps.LatLng(coords[0], coords[1]);
+							        pan(latLng);
+							        if (marker && marker.setMap) {
+							            marker.setMap(null);
+							        }
+							        marker = new google.maps.Marker({
+							            map: map,
+							            position: latLng,
+							            animation: google.maps.Animation.DROP,
+							            icon: blueIco,
+							            normalIcon: blueIco
+							        });
+							        var faqTabContainer = $('.city-address');
+							        var faqRow = $(this).parent(),
+								    faqContent = $(this).parent().find('.address-detail');
+							    
+								    faqTabContainer.find('.address-detail').not(faqContent).stop().slideUp('slow');
+							        faqTabContainer.find('.specific-address').not(faqRow).removeClass('open');
+							        
+								    faqContent.stop().slideToggle('slow', function() {
+										faqRow.toggleClass('open', faqContent.is(':visible'));
+									});
+
+							    });
+							}
+							google.maps.event.addDomListener(window, 'load', initialize);
+
+							function pan(latlon) {
+							    map.panTo(latlon)
+							}
 						</script>
 
 					</div>
 		    		</div>
-		    		<div class="col-md-8">
-		    			<div class="map-layout">
-		    				<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDSVg3fytlIabOmTs9OYCleglSv9et6HfI'></script>
-		    				<div style='overflow:hidden;height:350px;width:640px;'>
-		    				<div id='gmap_canvas' style='height:350px;width:640px;'>
-		    					
-		    				</div>
-			    				<style>#gmap_canvas img{ max-width:none!important;background:none!important}
-			    				</style>
-		    				</div> 
-		    				<a href='http://www.maps-iframe.com/'>www.Maps-Iframe</a> 
-		    				<script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=fe05c15ff3626fa9d4de82da1bd894d3214e5d12'>
-		    				</script>
-		    				<script type='text/javascript'>
-		    				function init_map()
-		    					{ var myOptions = { 
-		    						zoom:16,
-		    						center:new google.maps.LatLng(49.1802801,16.61905630000001),
-		    						mapTypeId: google.maps.MapTypeId.ROADMAP};
-		    						map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-		    						marker = new google.maps.Marker({ map: map,position: new google.maps.LatLng(49.1802801,16.61905630000001)});
-		    						infowindow = new google.maps.InfoWindow({ content:'<strong>Allrisk Komárovska</strong><br>Komárovksá 20a<br>61700 Brno<br>'});google.maps.event.addListener(marker, 'click', function(){ infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
-		    				</script>
-		    			</div>
-
-		    		</div>
+		    		<div id="map-container" class="col-md-8 no-gutter" style="height:350px;"></div>
 				</div>
 			</div>
 		</div>

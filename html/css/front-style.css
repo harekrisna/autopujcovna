@@ -1261,3 +1261,9 @@ section#contact-form .form-control:focus {
 .address-detail {
   display: none;
 }
+
+.map-layout {
+width: 70%;
+height: 350px;
+margin: 0 auto;
+}
