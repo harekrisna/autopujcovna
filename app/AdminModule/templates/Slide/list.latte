@@ -1,0 +1,80 @@
+{layout 'layout.latte'}
+{block head}
+    <!-- Sweet Alert -->
+    <link href="{$basePath}/css/admin/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+{/block}
+{block content}
+    <div class="row" n:snippet="slides">
+        <div n:foreach="$records as $record" class="col-lg-4 slide">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$record->title}</h5><span class="italic-note">({$record->brand->title})</span>
+                    <div class="ibox-tools blue">
+                        <a n:if="$record->position > 1" n:href="updatePosition!, $record->id, $record->position-1" class="control">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a n:if="$record->position < $records->max('position')" n:href="updatePosition!, $record->id, $record->position+1" class="control">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                        <a n:href="edit, $record->id" class="control">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        <a n:href="delete!, $record->id" class="control delete" data-delete_name="{$record->title}" >
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content" style="max-height: 500px;">
+                    <img class="image-preview" src="{$basePath}/{=SLIDES_IMAGES_FOLDER}/{$record->photo_file}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+{/block}
+{block scripts}    
+    <!-- Sweet alert -->
+    <script src="{$basePath}/js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function() {
+            $('#snippet--slides').on('click', '.delete', function (event) {
+                var invoker = this;
+                var delete_name = $(invoker).data('delete_name');
+                if(delete_name == undefined) {
+                    delete_name = " ";
+                }
+                else {
+                    delete_name = " \"" + delete_name + "\" ";
+                }
+
+                event.preventDefault();
+                swal({
+                    title: "Opravdu slide" + delete_name +"smazat?",
+                    text: "Tato operace je nevratná!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Ano, smazat!",
+                    cancelButtonText: "Zrušit!",
+                    closeOnConfirm: false
+                }, function () {
+                    $.get(invoker.href, 
+                        function (payload) { 
+                            console.log(this);
+                            $.nette.success(payload);
+                            if(payload.success) {
+                                swal("Smazáno!", "Novinka byla smazána", "success");
+                                $(invoker).closest('.slide').fadeOut();
+                            }
+                            else {
+                                swal("Chyba!", "Novinku se nepodařilo smazat", "error");
+                            }
+                        }
+                    );
+                });
+            });
+        });
+    </script>
+{/block}

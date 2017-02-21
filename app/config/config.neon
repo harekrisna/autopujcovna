@@ -28,6 +28,7 @@ services:
 	- App\AdminModule\Forms\VehicleFormFactory
 	- App\AdminModule\Forms\BrandFormFactory
 	- App\AdminModule\Forms\RentalOrderFormFactory
+	- App\AdminModule\Forms\SlideFormFactory
 	- App\AdminModule\Forms\TextFormFactory
 	router: App\RouterFactory::createRouter
 
@@ -36,4 +37,5 @@ services:
 	brand: App\Model\Brand
 	photo: App\Model\Photo
 	rentalOrder: App\Model\RentalOrder
+	slide: App\Model\Slide
 	text: App\Model\Text

@@ -1,0 +1,45 @@
+{snippet slideshow}
+<section id="our-cars">
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-lg-12 wow fadeIn">
+                <h1>NAŠE VOZIDLA</h1>
+                <hr class="colored our-cars-line thick">
+                <ul class="nav-center">
+                    <li n:foreach="$slides_brands as $slide"><a n:href="sliderBrandFilter, $slide->brand_id" class="ajax no-push-history" title="">{$slide->brand->title|upper}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="car-slideshow">
+        <div class="container">
+            <br>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li n:foreach="$slides as $slide" data-target="#myCarousel" data-slide-to="{$iterator->counter - 1}" n:class="$iterator->first ? active"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div n:foreach="$slides as $slide" n:class="item, $iterator->first ? active">
+                        <div>
+                        <img src="{$basePath}//{=SLIDES_IMAGES_FOLDER}/{$slide->photo_file}" alt="Škoda Superb" height="345" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{/snippet}

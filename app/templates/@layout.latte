@@ -64,8 +64,6 @@
                     </li>
                     <li>
 						<a href="https://www.facebook.com/allriskcz/" class="padd-top-9" target="_blank"><i class="icon-25 icon-fa-white"></i></a>
-                    	
-
                     </li>
                     <li>
 				        <a class="dropdown-toggle" data-toggle="dropdown">
@@ -97,65 +95,7 @@
             
         </div> 	  
     </header>
-    <section id="our-cars">
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-lg-12 wow fadeIn">
-                    <h1>NAŠE VOZIDLA</h1>
-                    <hr class="colored our-cars-line thick">
-					<ul class="nav-center">
-	                    <li><a href="" title="">FORD</a></li>
-	                    <li><a href="" title="">ŠKODA</a></li>
-	                    <li><a href="" title="">BMW</a></li>
-	                    <li><a href="" title="">VW</a></li>
-					</ul>
-                </div>
-            </div>
-        </div>
-		<div class="car-slideshow">
-	        <div class="container">
-				<br>
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
-					</ol>
-
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<img src="{$basePath}/images/front-end/cars/skoda/2_Superb_retus.png" alt="Škoda Superb" width="460" height="345" />
-						</div>
-
-						<div class="item">
-							<img src="{$basePath}/images/front-end/cars/skoda/1_Octavia_retus.png" alt="Chania" width="460" height="345" />
-						</div>
-
-						<div class="item">
-							<img src="{$basePath}/images/front-end/cars/skoda/1_Octavia_combi_retus.png" alt="Flower" width="460" height="345" />
-						</div>
-
-						<div class="item">
-							<img src="{$basePath}/images/front-end/cars/skoda/1_Kodiak_retus.png" alt="Flower" width="460" height="345" />
-						</div>
-					</div>
-
-					<!-- Left and right controls -->
-					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
-				</div>
-			</div>
-		</div>
-    </section>
+    {include Homepage/slideshow.latte}
     <section id="reservation-form" class="bg-dark">
         <div class="container text-center" id="main_container">
             <h1>REZERVACE VOZIDLA</h1>
@@ -274,7 +214,7 @@
 								
 							</hr>
 						</div>
-						{form vehiclesFilterForm, class => "ajax"}
+						{form vehiclesFilterForm}
 							<style>
 								label {
 									color: #333;
@@ -455,11 +395,8 @@
 			 		</p>
 			 	</div>
 			 </div>
-				
 			</div>
-
 		</div>
-
 	</section>
 	<section id="our-branch">
     	<div class="container-fluid">
@@ -662,12 +599,12 @@
 	        $('.flash').hide().fadeIn(800).delay(2800).fadeOut(800);
 
 	        $('a.page-scroll').bind('click', function(event) {
-	        var $anchor = $(this);
-	        $('html, body').stop().animate({
-	            scrollTop: ($($anchor.attr('href')).offset().top - 50)
-	        }, 1250, 'easeInOutExpo');
-	        event.preventDefault();
-	    });
+		        var $anchor = $(this);
+		        $('html, body').stop().animate({
+		            scrollTop: ($($anchor.attr('href')).offset().top - 50)
+		        }, 1250, 'easeInOutExpo');
+		        event.preventDefault();
+		    });
 	    </script>
     {/snippet}
 	{block scripts}
@@ -741,6 +678,25 @@
 			});			
 		});
 
+		$('body').on('submit', '#frm-vehiclesFilterForm', function(event) {
+			var form = $(this);
+			var action = form.attr("action");
+
+			$.ajax({
+			    type: "POST",
+			    url: action,
+			    data: $(this).serialize(),
+			    success: function(data) {                   
+					$.nette.success(data);
+					window.history.pushState(data, null, action);
+					$('html, body').stop().animate({
+			            scrollTop: ($('#reservation-form').offset().top + 30)
+			        }, 1250, 'easeInOutExpo');
+			    }
+			});
+			event.preventDefault();
+		});
+
 		$('body').on('click', '#back_to_list', function() {
 			$.ajax({
 		    	type: "POST",
@@ -752,7 +708,7 @@
 				}
 			});
 		});
-		
+
 		jQuery.extend(jQuery.validator.messages, {
 			required: "Toto pole je povinné.",
             email: "Prosím zadejte validní emailovou adresu.",

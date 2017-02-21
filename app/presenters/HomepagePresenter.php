@@ -23,6 +23,28 @@ class HomepagePresenter extends BasePresenter {
 	/** @var ContactFormFactory @inject */
 	public $contactFormFactory;		
 
+	public function beforeRender() {
+		parent::beforeRender();
+
+		if(!$this->isAjax()) {
+			$this->template->slides = $this->slide->findAll()
+						 						  ->order('position ASC');
+		}
+
+		$this->template->slides_brands = $this->slide->findAll()
+													 ->group('brand_id');
+	}
+
+
+	public function renderSliderBrandFilter($brand_id) {
+		$this->template->slides = $this->slide->findBy(['brand_id' => $brand_id])
+			 						  		  ->order('position ASC');
+
+		$this->setLayout(false);
+		$this->setView('slideshow');
+		$this->redrawControl('slideshow');
+	}
+
 	public function renderVehiclesList() {
 		if(empty($_SESSION['filters'])) {
 			$vehicles = $this->vehicle->findAll()

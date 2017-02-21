@@ -79,11 +79,13 @@ $('body').on('submit', 'form.ajax', function( event ) {
 });
 
 $('body').on('click', 'a.ajax', function (event) {
-	var href = this.href;
-	
+	var a = this;
+
 	$.get(this.href,function( data ) {
 		$.nette.success(data);
-		window.history.pushState(data, null, href);
+		if(!$(a).hasClass("no-push-history")) {
+			window.history.pushState(data, null, a.href);
+		}
 	});
 	
     event.preventDefault();

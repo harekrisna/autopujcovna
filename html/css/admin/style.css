@@ -338,6 +338,12 @@ textarea.form-control.import-source {
 .form-group.padding-checkbox {
   padding-top: 14px;
 }
+.form-group .image-preview {
+  width: 100%;
+  max-width: 518px;
+  margin-top: 4px;
+  display: block;
+}
 .form-group .tiny {
   width: 100px;
 }
@@ -367,6 +373,36 @@ table .processed {
 }
 table .no-processed {
   color: red;
+}
+.ibox-title .italic-note {
+  font-style: italic;
+  line-height: 14px;
+  margin-left: 5px;
+  float: left;
+}
+.image-preview {
+  width: 100% !important;
+}
+.ibox-tools.blue a.control {
+  color: #337ab7;
+  font-size: 14px;
+}
+.ibox-tools.blue a.control i.fa-chevron-up,
+.ibox-tools.blue a.control i.fa-chevron-down {
+  position: relative;
+  top: -2px;
+}
+.ibox-tools.blue a.control i.fa-arrow-left,
+.ibox-tools.blue a.control i.fa-arrow-right {
+  position: relative;
+  top: -1px;
+}
+.ibox-tools.blue a.control i.fa-pencil-square-o {
+  font-size: 15px;
+  font-weight: bold;
+}
+.ibox-tools.blue a.control i.fa-times {
+  font-size: 17px;
 }
 h1.clear {
   border-bottom: 1px solid #cacaca;

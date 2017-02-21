@@ -19,6 +19,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
 	protected $rentalOrder;
 	/** @var Photo */
 	protected $photo;
+	/** @var Slide */
+	protected $slide;
 	/** @var Text */
 	protected $text;
 	/** @var User */
@@ -35,6 +37,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter {
         $this->photo = $this->context->getService('photo');
         $this->brand = $this->context->getService('brand');
         $this->rentalOrder = $this->context->getService('rentalOrder');
+        $this->slide = $this->context->getService('slide');
         $this->text = $this->context->getService('text');
 		$this->user = $this->getUser();
 
