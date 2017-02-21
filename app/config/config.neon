@@ -14,6 +14,10 @@ application:
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+constants:
+	RESERVATION_CONFIRM_EMAIL = barta.michal@allrisk.cz
+	SLIDES_IMAGES_FOLDER = images/slides
+	
 session:
 	expiration: 14 days
 
