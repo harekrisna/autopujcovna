@@ -3,11 +3,36 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Potvrzení rezervace vozidla</title>
 </head>
+<style type="text/css">
+	table {
+		width: 1000px;
+		border-collapse: collapse;
+	}
+
+	table th {
+		width: 140px;
+		text-align: right;
+		padding-right: 10px;
+	}
+</style>
 <body>
     <p>Dobrý den,</p>
-    <p>Vaše rezervace byla přijata.</p>
+    <p>VAŠE REZERVACE BYLA PŘIJATA.</p>
     <hr />
-Allrisk
+    <table>
+    	<tr><th>Vozidlo:</th><td>{$vehicle->brand->title} {$vehicle->type} {$vehicle->bodywork}, {$vehicle->fuel} {$vehicle->transmission}</td></tr>
+    	<tr><th>Jméno:</th><td>{$data->name}</td></tr>
+		<tr><th>Příjmení:</th><td>{$data->surname}</td></tr>
+		<tr><th>Email:</th><td>{$data->email}</td></tr>
+		<tr><th>Telefon:</th><td>{$data->phone}</td></tr>
+		<tr><th>Místo&nbsp;přistavení:</th><td>{$data->give_place}</td></tr>
+		<tr><th>Čas&nbsp;přistavení:</th><td>{$data->give_time|date: 'd.m.y H:i'}</td></tr>
+		<tr><th>Místo&nbsp;odstavení:</th><td>{$data->take_place}</td></tr>
+		<tr><th>Čas&nbsp;odstavení:</th><td>{$data->take_time|date: 'd.m.y H:i'}</td></tr>
+		<tr><th>Poznámka:</th><td>{$data->note}</td></tr></td></tr>
+	</table>
+	<hr />
+	Allrisk
 </div>   
 </body>
 </html>

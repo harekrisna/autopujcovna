@@ -5,6 +5,9 @@ namespace App\Forms;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Utils\DateTime;
+use Latte;
+use Nette\Mail\Message;
+use Nette\Mail\SendmailMailer;
 use Tracy\Debugger;
 
 class RentalOrderFormFactory extends Nette\Object {
@@ -19,9 +22,10 @@ class RentalOrderFormFactory extends Nette\Object {
 
 	private $record;
 		
-	public function __construct(FormFactory $factory, \App\Model\RentalOrder $rental_order) {
+	public function __construct(FormFactory $factory, \App\Model\RentalOrder $rental_order, \App\Model\Vehicle $vehicle) {
 		$this->factory = $factory;
 		$this->rental_order = $rental_order;
+		$this->vehicle = $vehicle;
 	}
 
 	public function create($record = null) {
@@ -62,6 +66,26 @@ class RentalOrderFormFactory extends Nette\Object {
 	}
 
 	public function formSucceeded(Form $form, $values) {
-		$this->rental_order->insert($values->data);
+		if($this->rental_order->insert($values->data)) {
+			$latte = new Latte\Engine;		
+			$params = array(
+				'data' => $values['data'],
+				'vehicle' => $this->vehicle->get($values['data']['vehicle_id']),
+			);
+			
+			$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
+	        
+	        $mail = new Message;
+			$mail->setFrom("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
+	        	 ->addTo($values['data']['surname']." <".$values['data']['email'].">")
+	        	 ->addTo("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
+	             ->setSubject("Potvrzení rezervace vozidla")
+				 ->setHtmlBody($template);
+	        
+	        $mailer = new SendmailMailer;
+	        $mailer->send($mail);
+	        $phone = str_replace(' ', '', $values['data']['phone']);
+	        mail("<sms:".$phone."@allrisk.cz>", '', "Rezervace byla přijata, budeme Vás kontaktovat. Děkujeme.");
+        }
 	}
 }

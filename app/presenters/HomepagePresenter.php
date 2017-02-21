@@ -5,9 +5,6 @@ namespace App\Presenters;
 use Nette;
 use App\Model;
 use Tracy\Debugger;
-use Latte;
-use Nette\Mail\Message;
-use Nette\Mail\SendmailMailer;
 use App\Forms\VehiclesFilterFormFactory;
 use App\Forms\RentalOrderFormFactory;
 use App\Forms\ContactFormFactory;
@@ -109,25 +106,6 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->rentalOrderFormFactory->create();
 
 		$form->onSuccess[] = function ($form, $values) {
-			$latte = new Latte\Engine;		
-			$params = array(
-				'surname' => $values['data']['surname'],
-				'email' => $values['data']['email'],
-			);
-			
-			$template = $latte->renderToString('../app/templates/components/reservation-confirm-email.latte', $params);
-	        
-	        $mail = new Message;
-			$mail->setFrom("autopujcovna@allrisk.cz <autopujcovna@allrisk.cz>")
-	        	 ->addTo($values['data']['surname']." <".$values['data']['email'].">")
-	             ->setSubject("Potvrzení rezervace")
-				 ->setHtmlBody($template);
-	             
-	        $mailer = new SendmailMailer;
-	        $mailer->send($mail);
-	        $phone = str_replace(' ', '', $values['data']['phone']);
-	        mail("<sms:".$phone."@allrisk.cz>", '', "Vaše rezervace byla přijata, budeme Vás telefonicky či emailem kontaktovat. Váš Allrisk.");
-		    
 			$this->flashMessage("Rezervace byla přijata", 'success');
 			$this->template->success = true;
 			$this->template->values = $values->data;

@@ -380,8 +380,11 @@ table .no-processed {
   margin-left: 5px;
   float: left;
 }
+.clear-left {
+  clear: left;
+}
 .image-preview {
-  width: 100% !important;
+  width: 100%;
 }
 .ibox-tools.blue a.control {
   color: #337ab7;

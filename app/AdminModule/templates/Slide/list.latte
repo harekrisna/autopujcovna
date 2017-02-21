@@ -5,8 +5,8 @@
 {/block}
 {block content}
     <div class="row" n:snippet="slides">
-        <div n:foreach="$records as $record" class="col-lg-4 slide">
-            <div class="ibox float-e-margins">
+        <div n:foreach="$records as $record" n:class="col-lg-4, slide, $iterator->counter % 3 == 1 ? clear-left">
+            <div class="ibox float-e-margins" >
                 <div class="ibox-title">
                     <h5>{$record->title}</h5><span class="italic-note">({$record->brand->title})</span>
                     <div class="ibox-tools blue">
@@ -24,7 +24,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="ibox-content" style="max-height: 500px;">
+                <div class="ibox-content">
                     <img class="image-preview" src="{$basePath}/{=SLIDES_IMAGES_FOLDER}/{$record->photo_file}" />
                 </div>
             </div>
