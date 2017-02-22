@@ -1219,6 +1219,9 @@ section#contact-form .form-control:focus {
 
 .pure-list {
 	list-style-type: none;
+  margin-left: -27px;
+  margin-top: 3px;
+  margin-bottom: 30px;
 }
 
 .link-white {
