@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-12 well" id="filter_orderby">
 		<span class="pull-left">vyhledáno: {$vehicles->count()} automobilu</span>
-		<span class="pull-right">seřadit podle: <a n:href="setOrderBy!, price" class="ajax">cena</a> <a n:href="setOrderBy!, title" class="ajax">název</a></span>
+		<span class="pull-right">seřadit podle: <a n:href="setOrderBy!, price" class="ajax no-push-history">cena</a> <a n:href="setOrderBy!, title" class="ajax no-push-history">název</a></span>
 	</div>
 </div>
 {foreach $vehicles as $vehicle}
@@ -16,7 +16,7 @@
 			</div>
 			{var $picture = $vehicle->related('photo')->order('position')->limit(1)->fetch()}
 			<div class="col-md-4">
-				<span class="label label-default btn-price color-black">{$vehicle->price},-/den</span>
+				<span class="label label-default btn-price color-black">od {$vehicle->price},-/den</span>
 			</div>
 		</div>
 		<div class="row">
