@@ -25,7 +25,7 @@
     <link href="{$basePath}/framework/formstone/background.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/animate.css/animate.min.css" rel="stylesheet" type="text/css">
     <link href="{$basePath}/framework/device-mockups/device-mockups.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Bitter|Inder|Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter|Inder|Muli&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{$basePath}/css/front-style.css">   
 	<link href="{$basePath}/css/admin/plugins/datapicker/datepicker3.css" rel="stylesheet">    
 	{block head}{/block}
@@ -321,7 +321,7 @@
 		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/on_call.jpg" alt="on_call" width="247" height="247" />
 		    				<div class="text-field-about-us">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>{$text['services_column_2_text']}</p>
 							</div>
 		    			</div>
 
@@ -330,7 +330,7 @@
 		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/money.jpg" alt="money" width="247" height="247" />
 		    				<div class="text-field-about-us">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>{$text['services_column_3_text']}</p>
 							</div>
 		    			</div>
 		    		</div>
@@ -338,7 +338,7 @@
 		    			<div class="box-fluid-content-first">
 		    				<img src="{$basePath}/images/front-end/about/signature.jpeg" alt="signature" width="247" height="247" />
 		    				<div class="text-field-about-us">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>{$text['services_column_4_text']}</p>
 							</div>
 		    			</div>
 		    		</div>
@@ -420,54 +420,68 @@
 				    					<li>Centrála společnosti Allrisk</li>
 				    					<li>Allrisk, a.s.</li>
 				    					<li>Komárovská 263/20A</li>
-					    					<li>Brno - Komárov, 617 00</li>
-					    					<li> &nbsp;</li>
-					    					<li>tel.: +420 545 110 341</li>
-					    					<li>e-mail: allrisk@allrisk.cz</li>
-					    				</ul>
-					    			</div>
-								</div>
-								<div class="specific-address">
-									<a class="location" data-location="50.090244,14.399568">PRAHA</a>
-				    				<div class="address-detail">
-				    					<ul class="pure-list margin-top-10">	
-				    						<li>Centrála společnosti Allrisk</li>
-			    							<li>Allrisk, a.s.</li>
-	    									<li>Komárovská 263/20A</li>
-					    					<li>Brno - Komárov, 617 00</li>
-						   					<li> &nbsp;</li>
-			    							<li>tel.: +420 545 110 341</li>
-			    							<li>e-mail: allrisk@allrisk.cz</li>
-		    						</ul>
-			    					</div>
-								</div>
+				    					<li>Brno - Komárov, 617 00</li>
+				    					<li>&nbsp;</li>
+				    					<li>tel.: +420 545 110 341</li>
+				    					<li>e-mail: allrisk@allrisk.cz</li>
+					    			</ul>
+					    		</div>
+							</div>
+							<div class="specific-address">
+								<a class="location" data-location="50.0766769,14.4418458">PRAHA</a>
+			    				<div class="address-detail">
+			    					<ul class="pure-list margin-top-10">	
+			    						<li>Klientské centrum Praha</li>
+		    							<li>Allrisk, a.s.</li>
+    									<li>Budečská 2165/33</li>
+				    					<li>Praha 2 – Vinohrady, 120 00</li>
+					   					<li>&nbsp;</li>
+		    							<li>tel.: +420 777 356 863</li>
+		    							<li>e-mail: praha@allrisk.cz</li>
+	    							</ul>
+		    					</div>
+							</div>
 			    			<div class="specific-address">
-			    			  <a class="location" data-location="51.454265,-0.97813">OLOMOUC</a>
-			    			<div class="address-detail">
-			    				<ul class="pure-list margin-top-10">	
-			    					<li>Centrála společnosti Allrisk</li>
-			    					<li>Allrisk, a.s.</li>
-			    					<li>Komárovská 263/20A</li>
-			    					<li>Brno - Komárov, 617 00</li>
-			    					<li> &nbsp;</li>
-			    					<li>tel.: +420 545 110 341</li>
-			    					<li>e-mail: allrisk@allrisk.cz</li>
-			    				</ul>
-			    			</div>
+			    			  	<a class="location" data-location="49.5980077,17.2525034">OLOMOUC</a>
+				    			<div class="address-detail">
+				    				<ul class="pure-list margin-top-10">	
+				    					<li>Klientské centrum Olomouc – Na Střelnici</li>
+				    					<li>Allrisk, a.s.</li>
+				    					<li>Na Střelnici 366/6</li>
+				    					<li>Olomouc - Lazce, 779 00</li>
+				    					<li>&nbsp;</li>
+				    					<li>tel.: +420 606 420 600</li>
+				    					<li>e-mail: filak.vlastimil@allrisk.cz</li>
+				    				</ul>
+				    			</div>
 			    			</div>
 			    			<div class="specific-address">
-			    			<a class="location" data-location="52.240477,-0.902656">OSTRAVA</a>
-			    			<div class="address-detail">
-			    				<ul class="pure-list">	
-			    					<li>Centrála společnosti Allrisk</li>
-			    					<li>Allrisk, a.s.</li>
-			    					<li>Komárovská 263/20A</li>
-			    					<li>Brno - Komárov, 617 00</li>
-			    					<li> &nbsp;</li>
-			    					<li>tel.: +420 545 110 341</li>
-			    					<li>e-mail: allrisk@allrisk.cz</li>
-			    				</ul>
+				    			<a class="location" data-location="49.8409381,18.2897644">OSTRAVA</a>
+				    			<div class="address-detail">
+				    				<ul class="pure-list">	
+				    					<li>Klientské centrum Ostrava</li>
+				    					<li>Allrisk, a.s.</li>
+				    					<li>Prokešovo náměstí 618/3</li>
+				    					<li>Moravská Ostrava, 702 00</li>
+				    					<li>&nbsp;</li>
+				    					<li>tel.: +420 777 466 799</li>
+				    					<li>e-mail: ostrava@allrisk.cz</li>
+				    				</ul>
+				    			</div>
 			    			</div>
+			    			<div class="specific-address">
+				    			<a class="location" data-location="48.1466183,17.1396514">BRATISLAVA</a>
+				    			<div class="address-detail">
+				    				<ul class="pure-list">	
+				    					<li>Klientské centrum Bratislava</li>
+				    					<li>Allrisk, a.s.</li>
+				    					<li>Prievozská 4b</li>
+				    					<li>Bratislava - Slovensko, 821 09</li>
+				    					<li>&nbsp;</li>
+				    					<li>tel.: +421 948 119 990</li>
+				    					<li>e-mail: info@allriskslovakia.sk</li>
+				    				</ul>
+				    			</div>
 			    			</div>
 
 						<script type='text/javascript'>

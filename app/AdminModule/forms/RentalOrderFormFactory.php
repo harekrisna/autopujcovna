@@ -35,7 +35,7 @@ class RentalOrderFormFactory extends Nette\Object {
 		$vehicles = $this->vehicle->findAll()->fetchPairs('id', 'rz');
 		$data->addSelect("vehicle_id", "Vozidlo", $vehicles)
 			 ->setPrompt("--- vyberte vozidlo ---")
-			 ->setRequired('Vyberte prosím vozidlo.');;
+			 ->setRequired('Vyberte prosím vozidlo.');
 		
 		$data->addText('name', 'Jméno', 512);
 		$data->addText('surname', 'Příjmení', 512)
